@@ -10,4 +10,3 @@ target/
 classes/
 out/
 web/WEB-INF/classes/
-src/main/mytest/*
