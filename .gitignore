@@ -1,0 +1,13 @@
+.idea/*
+out/*
+*.iml
+*.bak
+*.swp
+*.log
+*.class
+.idea/
+target/
+classes/
+out/
+web/WEB-INF/classes/
+src/main/mytest/*

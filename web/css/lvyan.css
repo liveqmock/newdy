@@ -1,0 +1,125 @@
+@charset "utf-8";
+/* CSS Document */
+body {}
+input[type="submit"],input[type="button"],input[type="reset"]{ cursor:pointer}
+
+
+.header .menu .nav {width:940px;}
+.header .menu .nav li { margin-left:-20px}
+.header .menu .nav li a{ width:136px; background:url(../images/navbj1.png) no-repeat bottom; padding:0; height:26px; line-height:45px; height:37px; margin-bottom:-10px; }
+.header .menu .nav li a:hover { background:url(../images/navbj2.png) no-repeat bottom; color:#fff; font-size:14px; font-weight:bold; border:0; z-index:999; position:relative}
+.header ul li a.click { border:0;}
+.wrap { width:100%; overflow:hidden; height:100%;}
+.Lframe{bottom:0; overflow:auto}
+
+.Mcontrol form{ padding:10px; background:#fff; border:1px solid #ddd; border-radius:3px;}
+.Mcontrol form input{}
+input[type="text"]{ border:1px solid #ddd;  height:26px;}
+.Mcontrol form input[type="text"]{width:120px;}
+.Mcontrol form label { padding-right:10px;}
+
+
+.Mcontrol table { width:100%; border:1px solid #ddd}
+.Mcontrol table th,.Mcontrol table td { border:1px solid #ddd;height:30px; text-align:center; vertical-align:middle; line-height:1.5}
+.Mcontrol table th { background:url(../images/btn.png) repeat-x bottom; }
+.Mcontrol table td{ border-top:0; border-bottom:0}
+.Mcontrol table td a { padding:10px; color:#506eaa}
+.Mcontrol table td a:hover{ color:#999}
+.Mcontrol table tr{ background:#fff}
+.Mcontrol table tr:nth-child(even){ background:#f7f7f7}
+
+
+.unit{ display:inline-block}
+.btn1{ height:28px; border:1px solid #ddd; border-radius:3px; background:#f5f5f5; padding:0 15px}
+.btn2{ width:85px; height:28px; color:#fff; background:#ff7800; border-radius:3px; border:0; }
+.layer { position:fixed; top:0; left:0; right:0 ; bottom:0; background:rgba(0,0,0,.3)}
+.layer .window { background:#fff;  width:630px;border:5px solid rgba(0,0,0,.5); margin:auto}
+.layer .title{ background:#e9e9e9; height:36px; font-size:14px; font-weight:bold; line-height:36px; text-align:center}
+.layer .title span { float:right; font-size:30px; font-weight:normal; margin-right:10px; cursor:pointer;}
+.layer .window ol { padding:30px; font-size:14px;}
+.layer .window ol li { padding:5px; line-height:1.5}
+.layer .window ol li span { font-weight:bold; width:100px; float:left;}
+.layer .window ol li i { float:right; width:430px; line-height:1.5}
+.layer .window ol li i em { font-size:12px; color:#bbb}
+.layer .window input[type="text"] { width:220px}
+.layer .window  textarea{ border:1px solid #ddd; width:100%; height:100px} 
+.layer .window.big{ width:800px}
+.layer .window.big ol li i { width:600px}
+.selectui{ background:#fff}
+.layer .window ol ol { padding:10px; background:#f1f4f6; }
+textarea.Wdate{ background-position:5px top; text-indent:2em}
+.layer .window ol ol table{ text-align:center;}
+.layer .window ol ol table tr { height:30px;}
+.layer .window ol ol table input[type="text"]{ width:100px; margin:10px; margin-top:0;}
+.layer .window ol ol table tr td:nth-child(1){ background:url(../images/h_03.png) no-repeat right}
+.layer .window ol ol table tr td:nth-child(2){ background:url(../images/h_03.png) no-repeat left}
+.layer .window ol ol table tr td:last-child{ display:none}
+.layer .window ol ol table tr:last-child td:last-child{ display:block}
+.weekday label { padding-right:10px}
+.layer .window .list .box { padding:20px; text-align:center}
+.layer .window .list table{ width:100%; border:1px solid #ddd; text-align:center;}
+.layer .window .list table tr { height:30px; vertical-align:middle;}
+.layer .window .list table tr:nth-child(even){ background:#f7f7f7}
+.layer .window .list table th { background:url(../images/btn.png) bottom; vertical-align:middle; font-weight:bold; border:1px solid #ddd;}
+.layer .window .list table td{ vertical-align:middle; border-right:1px solid #ececec}
+.layer .window .list .box>ul>li { padding:3px; text-align:left; position:relative; line-height:1.5; padding-left:80px; line-height:26px;}
+.layer .window .list .box>ul>li span { display:block; width:80px; position:absolute; top:0; left:0; font-weight:bold}
+
+.Bnav { margin:10px ; float:right; margin-right:0;}
+.Bnav ul { padding:0 10px; text-align:center; height:26px; }
+.Bnav ul li,.Bnav ul>div{ display:inline-block; padding:0 8px; background:#fff; border:1px solid #ddd; color:#333; height:26px; line-height:26px; cursor:pointer; margin:1px;}
+.Bnav ul>div:hover{ color:#ff7800; text-decoration:underline; border-color:#ff7800}
+.Bnav ul li:hover { color:#ff7800; text-decoration:underline}
+.Bnav ul li.click {color:#fff; background:#ff7800; border-color:#fff;}
+.Bnav ul li.def { color:#cccccc}
+.Bnav ul li:last-child{ display:block}
+.menu .nav{ padding:0  20px 0 20px;position:relative; width:940px}
+.menu .window{ width:900px; position:relative; overflow:hidden; height:35px; padding-left:35px;}
+.menu .nav .leftbtn,.menu .nav .rightbtn { position:absolute; width:15px; height:35px;  z-index:99; font-size:16px; text-align:center; line-height:45px; font-family:Arial, Helvetica, sans-serif; color:#333; top:0; cursor:pointer; font-weight:bold}
+.menu .nav .rightbtn { right:0px}
+.menu .nav .leftbtn {left:0}
+.menu .window .ceng { width:1900px;}
+
+
+.Bmenu{ padding:10px 0;}
+.Bmenu a { color:#506eaa}
+.lycon { background:#fff; border:1px solid #ddd; padding:30px;}
+.lycon>ol>li { position:relative; padding:5px; padding-left:110px; line-height:1.5}
+.lycon>ol>li>span { width:100px; text-align:right; padding-right:10px; position:absolute; left:0; font-weight:bold}
+.lycon>ol>li .pic h6{ color:#506eaa; padding:5px;}
+.lycon>ol>li .pic h6 i { color:#999; padding:10px}
+.lycon>ol>li .pic em { float:left; text-align:center; margin-right:20px; line-height:1.5}
+.lycon>ol>li .pic em:last-child{ cursor:pointer}
+.lycon>ol>li .pic em img { border:1px solid #ddd; width:80px; height:50px}
+.lycon>ol>li .pic em a { color:#506eaa}
+.lycon>ol>li textarea { width:100%; min-height:150px; border:1px solid #ddd}
+
+
+.imgfile{ float:left; margin-right:10px; overflow:hidden}
+
+
+.money { background:#f1f4f6; padding:20px; position:relative; margin-bottom:20px;}
+.money h2 span { font-family:"微软雅黑"; font-size:20px; color:#ff7800; padding-left: 20px;}
+.money h2 .btn2{ margin:0 20px}
+.dongjie { position:absolute; left:0; top:0; padding:5px 10px; background:#999; color:#fff;}
+.addcreditcard { padding:50px;}
+.addcreditcard h3 { font-size:16px; font-weight:bold; padding-bottom:40px}
+.addcreditcard ol>li { padding:5px; padding-left:100px; position:relative; }
+.addcreditcard ol>li span { display:block; position:absolute; width:80px; text-align:right; top:0; left:0; line-height:32px}
+.Mcontrol>h2 { font-size:14px; font-weight:bold; padding:10px 0;}
+
+td.yellow { color:#ff7800}
+
+
+.header .wrap{ position:relative}
+.header .wrap .welcome { position:absolute; top:0; right:10px; }
+
+
+
+
+
+
+
+
+
+
