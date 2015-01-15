@@ -22,8 +22,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <script type="text/javascript">
-    	<%--window.location.href = "<%=basePath%>login";--%>
-        window.location.href="<%=basePath%>tuser/homePage"
+    	window.location.href = "<%=basePath%>login";
+        <%--window.location.href="<%=basePath%>tuser/homePage"--%>
     </script>
   </body>
 </html>
