@@ -1,6 +1,7 @@
 package com.cz.service;
 
 import com.cz.model.Tuser;
+import com.cz.utils.PageUtil;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public interface TuserService {
 
     String addInfo(Tuser addInfo);
 
-    List<Tuser> getAll();
+    PageUtil<Tuser> getAllTuserPageList(PageUtil<Tuser> pageUtil);
 
     String delete(String id);
 

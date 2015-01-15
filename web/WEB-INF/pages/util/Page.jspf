@@ -1,0 +1,58 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" pageEncoding="utf-8"%>
+<div class="footer">
+	<div style="display: inline;">
+        <span>共 <b>${pageUtil.totalRecord}</b> 条</span>
+	</div>
+	<div style=" margin-right: 20px; display: inline">
+		<a href="javascript:go2Page(1)" title="<<" style="cursor: hand;"  class="xz">
+            <<
+		</a>
+		<c:forEach begin="${pageUtil.beginPageIndex}" end="${pageUtil.endPageIndex}" var="pageNo">
+			<c:if test="${pageNo != pageUtil.pageNo}">
+			    <a href="javascript:go2Page(${pageNo});" style=" margin: 3px;">${pageNo}</a>
+			</c:if>
+			<c:if test="${pageNo == pageUtil.pageNo}">
+			    <span style=" margin: 5px;background:#5aa0f4; padding: 6px 6px 4px 6px; color: #fff;"  >${pageNo}</span>
+			</c:if>
+		</c:forEach>
+        <c:if test="${pageUtil.endPageIndex<(pageUtil.totalPage-3)}">
+            ...
+            <a href="javascript:go2Page(${pageUtil.endPageIndex+3});" style=" margin: 3px;">${pageUtil.endPageIndex+3}</a>
+        </c:if>
+		<a href="javascript: go2Page(${pageUtil.totalPage})" title=">>" style="cursor: hand;margin-right: 10px;"  class="xz">
+            >>
+        </a>
+
+		转到第 <input id="pn" onFocus="this.select();"  type="text" value="" name="currPage" tabindex="0" /> 页
+		<input type="button" name="goBtn" value="GO" class="xz" onclick="go2Page(document.getElementById('pn').value)" style="width: 32px; height: 26px; border: none;background:#5aa0f4; color: #fff;"/>
+	</div>
+</div>
+<script type="text/javascript">
+	function go2Page(pageNo) {
+        if(pageNo == undefined || pageNo==null || pageNo=="") {
+            pageNo = 1;
+        }
+        if(isNaN(pageNo)){
+            alert("请输入数字");
+            return;
+        }
+        if(pageNo<=0){
+            alert('数字非法，请输入大于0的整数');
+            $("#pn").val('');
+            return;
+        }
+		if (pageNo > ${page.totalPage}) {
+			alert("页码无效");
+			return;
+		}
+        //alert(pageNo);
+        $("#pageNo").val(pageNo);
+        //$("#queryForm").submit();
+        // queryResult(pageNo);
+        ${not empty pageUtil.functionStr?pageUtil.functionStr:"queryResult();"}
+        $("#pageNo").val('');
+		//window.document.forms[0].pageNo.value=pageNo;
+		//window.document.forms[0].submit();
+	}
+</script>

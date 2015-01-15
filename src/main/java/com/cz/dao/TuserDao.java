@@ -2,6 +2,8 @@ package com.cz.dao;
 
 import com.cz.model.Tuser;
 import java.util.List;
+
+import com.cz.utils.PageUtil;
 import org.apache.ibatis.annotations.Param;
 
 public interface TuserDao {
@@ -9,6 +11,10 @@ public interface TuserDao {
     int deleteByPrimaryKey(Integer userId);
 
     int insert(Tuser record);
+
+    List<Tuser> getAllTuserPageList(PageUtil<Tuser> pageUtil);
+
+    int getAllTuserTotal(PageUtil<Tuser> pageUtil);
 
     int insertSelective(Tuser record);
 

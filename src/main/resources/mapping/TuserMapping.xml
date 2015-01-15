@@ -43,6 +43,15 @@
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
 
+  <select id="getAllTuserPageList"  resultMap="BaseResultMap" parameterType="com.cz.utils.PageUtil">
+        SELECT user_id, user_name, password,name_cn, sex, birthday,phone_no, email FROM tuser
+        limit #{startIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+
+  <select id="getAllTuserTotal" resultType="java.lang.Integer"  parameterType="com.cz.utils.PageUtil">
+        SELECT count(user_id) FROM tuser
+  </select>
+
   <insert id="insert" parameterType="com.cz.model.Tuser">
     insert into tuser (user_id, user_name, password, 
       name_cn, sex, birthday, 
