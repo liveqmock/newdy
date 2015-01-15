@@ -4,8 +4,6 @@ import com.cz.model.Tuser;
 import java.util.List;
 
 import com.cz.utils.PageUtil;
-import org.apache.ibatis.annotations.Param;
-
 public interface TuserDao {
 
     int deleteByPrimaryKey(Integer userId);

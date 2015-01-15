@@ -2,8 +2,6 @@ package com.cz.dao;
 
 import com.cz.model.Menu;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
-
 public interface MenuDao {
 
     int deleteByPrimaryKey(Integer menu_id);
