@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cz.dao.TuserDao">
+  <resultMap id="BaseResultMap" type="com.cz.model.Tuser">
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="name_cn" jdbcType="VARCHAR" property="nameCn" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="birthday" jdbcType="VARCHAR" property="birthday" />
+    <result column="phone_no" jdbcType="VARCHAR" property="phoneNo" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="post_address" jdbcType="VARCHAR" property="postAddress" />
+    <result column="learn_level" jdbcType="VARCHAR" property="learnLevel" />
+    <result column="desc" jdbcType="VARCHAR" property="desc" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="edit_time" jdbcType="TIMESTAMP" property="editTime" />
+    <result column="editor" jdbcType="VARCHAR" property="editor" />
+    <result column="uuid" jdbcType="VARCHAR" property="uuid" />
+    <result column="entry_time" jdbcType="TIMESTAMP" property="entryTime" />
+    <result column="identity_card" jdbcType="VARCHAR" property="identityCard" />
+    <result column="user_position" jdbcType="VARCHAR" property="userPosition" />
+    <result column="status_flag" jdbcType="VARCHAR" property="statusFlag" />
+    <result column="is_admin" jdbcType="VARCHAR" property="isAdmin" />
+    <result column="head_portrait" jdbcType="VARCHAR" property="headPortrait" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    user_id, user_name, password, name_cn, sex, birthday, phone_no, email, post_address, 
+    learn_level, desc, status, remark, edit_time, editor, uuid, entry_time, identity_card, 
+    user_position, status_flag, is_admin, head_portrait
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tuser
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tuser
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.cz.model.Tuser">
+    insert into tuser (user_id, user_name, password, 
+      name_cn, sex, birthday, 
+      phone_no, email, post_address, 
+      learn_level, desc, status, 
+      remark, edit_time, editor, 
+      uuid, entry_time, identity_card, 
+      user_position, status_flag, is_admin, 
+      head_portrait)
+    values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{nameCn,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{birthday,jdbcType=VARCHAR}, 
+      #{phoneNo,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{postAddress,jdbcType=VARCHAR}, 
+      #{learnLevel,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{editTime,jdbcType=TIMESTAMP}, #{editor,jdbcType=VARCHAR}, 
+      #{uuid,jdbcType=VARCHAR}, #{entryTime,jdbcType=TIMESTAMP}, #{identityCard,jdbcType=VARCHAR}, 
+      #{userPosition,jdbcType=VARCHAR}, #{statusFlag,jdbcType=VARCHAR}, #{isAdmin,jdbcType=VARCHAR}, 
+      #{headPortrait,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cz.model.Tuser">
+    insert into tuser
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="nameCn != null">
+        name_cn,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="phoneNo != null">
+        phone_no,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="postAddress != null">
+        post_address,
+      </if>
+      <if test="learnLevel != null">
+        learn_level,
+      </if>
+      <if test="desc != null">
+        desc,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="editTime != null">
+        edit_time,
+      </if>
+      <if test="editor != null">
+        editor,
+      </if>
+      <if test="uuid != null">
+        uuid,
+      </if>
+      <if test="entryTime != null">
+        entry_time,
+      </if>
+      <if test="identityCard != null">
+        identity_card,
+      </if>
+      <if test="userPosition != null">
+        user_position,
+      </if>
+      <if test="statusFlag != null">
+        status_flag,
+      </if>
+      <if test="isAdmin != null">
+        is_admin,
+      </if>
+      <if test="headPortrait != null">
+        head_portrait,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nameCn != null">
+        #{nameCn,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNo != null">
+        #{phoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="postAddress != null">
+        #{postAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="learnLevel != null">
+        #{learnLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="desc != null">
+        #{desc,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="editTime != null">
+        #{editTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="editor != null">
+        #{editor,jdbcType=VARCHAR},
+      </if>
+      <if test="uuid != null">
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="entryTime != null">
+        #{entryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="identityCard != null">
+        #{identityCard,jdbcType=VARCHAR},
+      </if>
+      <if test="userPosition != null">
+        #{userPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="statusFlag != null">
+        #{statusFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="isAdmin != null">
+        #{isAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="headPortrait != null">
+        #{headPortrait,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.cz.model.Tuser">
+    update tuser
+    <set>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nameCn != null">
+        name_cn = #{nameCn,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNo != null">
+        phone_no = #{phoneNo,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="postAddress != null">
+        post_address = #{postAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="learnLevel != null">
+        learn_level = #{learnLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="desc != null">
+        desc = #{desc,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="editTime != null">
+        edit_time = #{editTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="editor != null">
+        editor = #{editor,jdbcType=VARCHAR},
+      </if>
+      <if test="uuid != null">
+        uuid = #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="entryTime != null">
+        entry_time = #{entryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="identityCard != null">
+        identity_card = #{identityCard,jdbcType=VARCHAR},
+      </if>
+      <if test="userPosition != null">
+        user_position = #{userPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="statusFlag != null">
+        status_flag = #{statusFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="isAdmin != null">
+        is_admin = #{isAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="headPortrait != null">
+        head_portrait = #{headPortrait,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cz.model.Tuser">
+    update tuser
+    set user_name = #{userName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      name_cn = #{nameCn,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=VARCHAR},
+      phone_no = #{phoneNo,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      post_address = #{postAddress,jdbcType=VARCHAR},
+      learn_level = #{learnLevel,jdbcType=VARCHAR},
+      desc = #{desc,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      edit_time = #{editTime,jdbcType=TIMESTAMP},
+      editor = #{editor,jdbcType=VARCHAR},
+      uuid = #{uuid,jdbcType=VARCHAR},
+      entry_time = #{entryTime,jdbcType=TIMESTAMP},
+      identity_card = #{identityCard,jdbcType=VARCHAR},
+      user_position = #{userPosition,jdbcType=VARCHAR},
+      status_flag = #{statusFlag,jdbcType=VARCHAR},
+      is_admin = #{isAdmin,jdbcType=VARCHAR},
+      head_portrait = #{headPortrait,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -6,12 +6,13 @@ package com.cz.web;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.cz.model.Tuser;
+import com.cz.utils.BaseController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.druid.util.StringUtils;
-import com.cz.model.TUserInfo;
 
 /**
  * @author hyrt001
@@ -31,9 +32,9 @@ public class LoginController extends BaseController {
 	 */
 	@RequestMapping(value = "/login")
 	public ModelAndView userLogin(HttpServletRequest request,
-			TUserInfo userInfo, HttpServletResponse response, String userLogo) {
+			Tuser userInfo, HttpServletResponse response, String userLogo) {
 		try {
-			TUserInfo userInfoTmp = getCurrentUser(request);
+			Tuser userInfoTmp = getCurrentUser(request);
             request.getSession().setAttribute("userName","Admin");
 			if (userInfoTmp != null) {
 				ModelAndView model = new ModelAndView();

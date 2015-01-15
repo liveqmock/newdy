@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cz.dao.MenuDao" >
+  <resultMap id="BaseResultMap" type="com.cz.model.Menu" >
+    <id column="menu_id" property="menu_id" jdbcType="INTEGER" />
+    <result column="menu_name" property="menu_name" jdbcType="VARCHAR" />
+    <result column="menu_url" property="menu_url" jdbcType="VARCHAR" />
+    <result column="open_way" property="open_way" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parent_id" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="edit_time" property="edit_time" jdbcType="TIMESTAMP" />
+    <result column="editor" property="editor" jdbcType="VARCHAR" />
+    <result column="icon_path" property="icon_path" jdbcType="VARCHAR" />
+    <result column="order_num" property="order_num" jdbcType="INTEGER" />
+    <result column="item_class" property="item_class" jdbcType="VARCHAR" />
+    <result column="icon_top_path" property="icon_top_path" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    menu_id, menu_name, menu_url, open_way, parent_id, status, edit_time, editor, icon_path, 
+    order_num, item_class, icon_top_path
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from menu
+    where menu_id = #{menu_id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from menu
+    where menu_id = #{menu_id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.cz.model.Menu" >
+    insert into menu (menu_id, menu_name, menu_url, 
+      open_way, parent_id, status, 
+      edit_time, editor, icon_path, 
+      order_num, item_class, icon_top_path
+      )
+    values (#{menu_id,jdbcType=INTEGER}, #{menu_name,jdbcType=VARCHAR}, #{menu_url,jdbcType=VARCHAR}, 
+      #{open_way,jdbcType=VARCHAR}, #{parent_id,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}, 
+      #{edit_time,jdbcType=TIMESTAMP}, #{editor,jdbcType=VARCHAR}, #{icon_path,jdbcType=VARCHAR}, 
+      #{order_num,jdbcType=INTEGER}, #{item_class,jdbcType=VARCHAR}, #{icon_top_path,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cz.model.Menu" >
+    insert into menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="menu_id != null" >
+        menu_id,
+      </if>
+      <if test="menu_name != null" >
+        menu_name,
+      </if>
+      <if test="menu_url != null" >
+        menu_url,
+      </if>
+      <if test="open_way != null" >
+        open_way,
+      </if>
+      <if test="parent_id != null" >
+        parent_id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="edit_time != null" >
+        edit_time,
+      </if>
+      <if test="editor != null" >
+        editor,
+      </if>
+      <if test="icon_path != null" >
+        icon_path,
+      </if>
+      <if test="order_num != null" >
+        order_num,
+      </if>
+      <if test="item_class != null" >
+        item_class,
+      </if>
+      <if test="icon_top_path != null" >
+        icon_top_path,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="menu_id != null" >
+        #{menu_id,jdbcType=INTEGER},
+      </if>
+      <if test="menu_name != null" >
+        #{menu_name,jdbcType=VARCHAR},
+      </if>
+      <if test="menu_url != null" >
+        #{menu_url,jdbcType=VARCHAR},
+      </if>
+      <if test="open_way != null" >
+        #{open_way,jdbcType=VARCHAR},
+      </if>
+      <if test="parent_id != null" >
+        #{parent_id,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="edit_time != null" >
+        #{edit_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="editor != null" >
+        #{editor,jdbcType=VARCHAR},
+      </if>
+      <if test="icon_path != null" >
+        #{icon_path,jdbcType=VARCHAR},
+      </if>
+      <if test="order_num != null" >
+        #{order_num,jdbcType=INTEGER},
+      </if>
+      <if test="item_class != null" >
+        #{item_class,jdbcType=VARCHAR},
+      </if>
+      <if test="icon_top_path != null" >
+        #{icon_top_path,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.cz.model.Menu" >
+    update menu
+    <set >
+      <if test="menu_name != null" >
+        menu_name = #{menu_name,jdbcType=VARCHAR},
+      </if>
+      <if test="menu_url != null" >
+        menu_url = #{menu_url,jdbcType=VARCHAR},
+      </if>
+      <if test="open_way != null" >
+        open_way = #{open_way,jdbcType=VARCHAR},
+      </if>
+      <if test="parent_id != null" >
+        parent_id = #{parent_id,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="edit_time != null" >
+        edit_time = #{edit_time,jdbcType=TIMESTAMP},
+      </if>
+      <if test="editor != null" >
+        editor = #{editor,jdbcType=VARCHAR},
+      </if>
+      <if test="icon_path != null" >
+        icon_path = #{icon_path,jdbcType=VARCHAR},
+      </if>
+      <if test="order_num != null" >
+        order_num = #{order_num,jdbcType=INTEGER},
+      </if>
+      <if test="item_class != null" >
+        item_class = #{item_class,jdbcType=VARCHAR},
+      </if>
+      <if test="icon_top_path != null" >
+        icon_top_path = #{icon_top_path,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where menu_id = #{menu_id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cz.model.Menu" >
+    update menu
+    set menu_name = #{menu_name,jdbcType=VARCHAR},
+      menu_url = #{menu_url,jdbcType=VARCHAR},
+      open_way = #{open_way,jdbcType=VARCHAR},
+      parent_id = #{parent_id,jdbcType=INTEGER},
+      status = #{status,jdbcType=VARCHAR},
+      edit_time = #{edit_time,jdbcType=TIMESTAMP},
+      editor = #{editor,jdbcType=VARCHAR},
+      icon_path = #{icon_path,jdbcType=VARCHAR},
+      order_num = #{order_num,jdbcType=INTEGER},
+      item_class = #{item_class,jdbcType=VARCHAR},
+      icon_top_path = #{icon_top_path,jdbcType=VARCHAR}
+    where menu_id = #{menu_id,jdbcType=INTEGER}
+  </update>
+</mapper>

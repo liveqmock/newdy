@@ -1,18 +1,16 @@
 /**
  * 
  */
-package com.cz.web;
+package com.cz.utils;
 
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.cz.model.Tuser;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.cz.model.TUserInfo;
-import com.cz.utils.Constant;
 
 /**
  * @author hyrt001
@@ -87,8 +85,8 @@ public class BaseController {
         return sourceUrl;
     }
     
-    public TUserInfo getCurrentUser(HttpServletRequest request){
-    	TUserInfo userInfo = (TUserInfo)request.getSession().getAttribute(Constant.USERINFO);
+    public Tuser getCurrentUser(HttpServletRequest request){
+    	Tuser userInfo = (Tuser)request.getSession().getAttribute(Constant.USERINFO);
         return userInfo;
     }
 
