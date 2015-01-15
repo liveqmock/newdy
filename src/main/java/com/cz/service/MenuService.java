@@ -29,5 +29,7 @@ public interface MenuService {
 
     Map<String, Object> getMainMenuByUserId(Integer userId);
 
+    List<Menu> getTopMenuByUserId(Integer userId);
+
     List<Menu> getMenuByParentId(Integer menu_id);
 }

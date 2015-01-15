@@ -243,7 +243,7 @@
   </select>
 
   <select id="getMenuByParentId" resultType="com.cz.model.Menu" parameterType="java.lang.Integer">
-    SELECT * from menu m WHERE m.parent_id = ${menu_id}
+    SELECT * from menu m WHERE m.parent_id = 2
   </select>
 
 </mapper>

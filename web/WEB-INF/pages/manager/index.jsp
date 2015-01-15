@@ -60,7 +60,7 @@
 			<div class="Rframe">
 				<!--这里是框架-->
 				<div class="iframe">
-					<iframe name="Rframe" style="width: 100%;" src="www.baidu.com">
+					<iframe name="Rframe" style="width: 100%;" src="" id="indexIframe">
 					</iframe>
 				</div>
 			</div>

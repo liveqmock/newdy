@@ -57,7 +57,7 @@ public class MenuServiceImpl implements MenuService {
     }
 
     /**
-     * 根据用户id查询用户的功能菜单
+     * 根据用户id查询用户的功能菜单 Map
      * @param userId
      * @return
      */
@@ -76,11 +76,21 @@ public class MenuServiceImpl implements MenuService {
     }
 
     /**
+     * 根据用户获取用户菜单 List
+     * @param userId
+     * @return
+     */
+    @Override
+    public List<Menu> getTopMenuByUserId(Integer userId){
+        return menuDao.getTopMenu(userId);
+    }
+
+    /**
      * 根据菜单id查询其下的菜单
      * @param menuId
      * @return
      */
     public List<Menu> getMenuByParentId(Integer menuId){
-        return getMenuByParentId(menuId);
+        return menuDao.getMenuByParentId(menuId);
     }
 }

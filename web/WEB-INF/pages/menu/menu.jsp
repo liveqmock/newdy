@@ -12,11 +12,22 @@
     <title></title>
 </head>
 <body>
-<c:forEach items="${menuMap.topMenu}" var="item" varStatus="status">
+<c:forEach items="${menuTopList}" var="item" varStatus="status">
     <dl <c:if test="${status.first}">class="show"</c:if>>
-        <dt id='ppuu_181' pid='pid_49' show='false'>
+        <dt id='ppuu_${status.index}' pid='pid_${status.index}' show='false'>
                 ${item.menu_name}
         </dt>
+        <dd>
+            <ul>
+            <c:forEach items="${map[item.menu_id]}" var="menu">
+                <li>
+                    <h4>
+                        <a href="${menu.menu_url}" target="indexIframe">${menu.menu_name}</a>
+                    </h4>
+                </li>
+             </c:forEach>
+            </ul>
+        </dd>
     </dl>
 </c:forEach>
 </body>
