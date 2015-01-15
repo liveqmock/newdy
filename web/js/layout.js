@@ -1,6 +1,8 @@
 // JavaScript Document
 $(document).ready(function(e) {
-	var $ = jQuery.noConflict();
+	// var $ = jQuery.noConflict();
+    initTopMenu();
+
    var winHeight=$(window).height()-78;
    $('.main').height(winHeight);
    $('iframe').height(winHeight-40)

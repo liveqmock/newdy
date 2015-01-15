@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Menu implements Serializable{
+
     private Integer menu_id;
 
     private String menu_name;

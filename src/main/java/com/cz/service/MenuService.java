@@ -1,10 +1,19 @@
-package com.cz.dao;
+package com.cz.service;
 
 import com.cz.model.Menu;
-import java.util.List;
-import org.apache.ibatis.annotations.Param;
+import com.cz.utils.PageUtil;
 
-public interface MenuDao {
+import java.util.List;
+import java.util.Map;
+
+/**
+ * Created with IntelliJ IDEA
+ * to do
+ * User: ChangYY
+ * Date: 15-1-15
+ * Time: 下午1:44
+ */
+public interface MenuService {
 
     int deleteByPrimaryKey(Integer menu_id);
 
@@ -18,7 +27,7 @@ public interface MenuDao {
 
     int updateByPrimaryKey(Menu record);
 
-    List<Menu> getTopMenu(Integer userId);
+    Map<String, Object> getMainMenuByUserId(Integer userId);
 
     List<Menu> getMenuByParentId(Integer menu_id);
 }

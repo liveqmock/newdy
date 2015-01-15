@@ -40,16 +40,12 @@ public class TuserController extends BaseController {
         if (pageNo != null && !"".equals(pageNo)) {
             num = Integer.parseInt(pageNo);
         }
-        tuser.setSex("1");
         PageUtil<Tuser> page=new PageUtil<Tuser>();
         page.setPageNo(num);
         page.setQueryParam(tuser);
         page = tuserService.getAllTuserPageList(page);
         ModelAndView model = new ModelAndView();
-        logger.info("getResults===="+page.getResults());
-        logger.info("getTotalRecord===="+page.getTotalRecord());
         model.addObject(page);
-        model.addObject("rd","rdxxxxxxxxx");
         model.setViewName(getPath(commonPath, "users"));
         return model;
     }

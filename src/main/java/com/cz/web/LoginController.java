@@ -38,7 +38,7 @@ public class LoginController extends BaseController {
             request.getSession().setAttribute("userName","Admin");
 			if (userInfoTmp != null) {
 				ModelAndView model = new ModelAndView();
-				model.setViewName("redirect:/user/platform");
+				model.setViewName("redirect:/tuser/platform");
 				return model;
 			} else {
 				if ("0".equalsIgnoreCase(userLogo)) {
@@ -53,7 +53,7 @@ public class LoginController extends BaseController {
 				} else if ("1".equalsIgnoreCase(userLogo)) {
 					// 非管理员登陆
 					ModelAndView model = new ModelAndView();
-					model.setViewName("/manager/manager");
+					model.setViewName("/manager/index");
                     return model;
 				} else {
 					// 意外事件
