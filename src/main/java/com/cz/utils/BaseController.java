@@ -11,6 +11,7 @@ import com.cz.model.Tuser;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.web.servlet.ModelAndView;
+import sun.rmi.runtime.Log;
 
 /**
  * @author hyrt001
@@ -18,7 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
  */
 public class BaseController {
 
-    private static Logger log= Logger.getLogger(BaseController.class);
+    private LogUtils logger = LogUtils.getLogUtils(BaseController.class);
+
     /**
      * 返回转发路径
      * @param commonPath
@@ -52,11 +54,11 @@ public class BaseController {
      */
     public void printMap(Map<String,String> map){
         if(map==null||map.size()==0){
-            log.info("map信息为空");
+            logger.info("map信息为空");
             return;
         }
         for(String key:map.keySet()){
-            log.info("key:"+key+",value:"+map.get(key));
+            logger.info("key:" + key + ",value:" + map.get(key));
         }
     }
 
