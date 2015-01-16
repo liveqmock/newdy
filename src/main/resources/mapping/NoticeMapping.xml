@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.cz.dao.NoticeDao" >
+<mapper namespace="com.cz.dao.NoticeMapper" >
   <resultMap id="BaseResultMap" type="com.cz.model.Notice" >
-    <id column="notice_id" property="notice_id" jdbcType="INTEGER" />
-    <result column="notice_title" property="notice_title" jdbcType="VARCHAR" />
-    <result column="notice_content" property="notice_content" jdbcType="VARCHAR" />
-    <result column="edit_time" property="edit_time" jdbcType="TIMESTAMP" />
+    <id column="notice_id" property="noticeId" jdbcType="INTEGER" />
+    <result column="notice_title" property="noticeTitle" jdbcType="VARCHAR" />
+    <result column="notice_content" property="noticeContent" jdbcType="VARCHAR" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
     <result column="editor" property="editor" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="VARCHAR" />
     <result column="sort" property="sort" jdbcType="INTEGER" />
-    <result column="course_id" property="course_id" jdbcType="INTEGER" />
-    <result column="notice_type" property="notice_type" jdbcType="VARCHAR" />
+    <result column="notice_type" property="noticeType" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -41,72 +40,43 @@
       </foreach>
     </where>
   </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
+
   <sql id="Base_Column_List" >
-    notice_id, notice_title, notice_content, edit_time, editor, status, sort, course_id, 
-    notice_type
+    notice_id, notice_title, notice_content, edit_time, editor, status, sort, notice_type
   </sql>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from notice
-    where notice_id = #{notice_id,jdbcType=INTEGER}
+    where notice_id = #{noticeId,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from notice
-    where notice_id = #{notice_id,jdbcType=INTEGER}
+    where notice_id = #{noticeId,jdbcType=INTEGER}
   </delete>
+
   <insert id="insert" parameterType="com.cz.model.Notice" >
     insert into notice (notice_id, notice_title, notice_content, 
       edit_time, editor, status, 
-      sort, course_id, notice_type
-      )
-    values (#{notice_id,jdbcType=INTEGER}, #{notice_title,jdbcType=VARCHAR}, #{notice_content,jdbcType=VARCHAR}, 
-      #{edit_time,jdbcType=TIMESTAMP}, #{editor,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
-      #{sort,jdbcType=INTEGER}, #{course_id,jdbcType=INTEGER}, #{notice_type,jdbcType=VARCHAR}
-      )
+      sort, notice_type)
+    values (#{noticeId,jdbcType=INTEGER}, #{noticeTitle,jdbcType=VARCHAR}, #{noticeContent,jdbcType=VARCHAR}, 
+      #{editTime,jdbcType=TIMESTAMP}, #{editor,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{sort,jdbcType=INTEGER}, #{noticeType,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.cz.model.Notice" >
     insert into notice
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="notice_id != null" >
+      <if test="noticeId != null" >
         notice_id,
       </if>
-      <if test="notice_title != null" >
+      <if test="noticeTitle != null" >
         notice_title,
       </if>
-      <if test="notice_content != null" >
+      <if test="noticeContent != null" >
         notice_content,
       </if>
-      <if test="edit_time != null" >
+      <if test="editTime != null" >
         edit_time,
       </if>
       <if test="editor != null" >
@@ -118,25 +88,22 @@
       <if test="sort != null" >
         sort,
       </if>
-      <if test="course_id != null" >
-        course_id,
-      </if>
-      <if test="notice_type != null" >
+      <if test="noticeType != null" >
         notice_type,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="notice_id != null" >
-        #{notice_id,jdbcType=INTEGER},
+      <if test="noticeId != null" >
+        #{noticeId,jdbcType=INTEGER},
       </if>
-      <if test="notice_title != null" >
-        #{notice_title,jdbcType=VARCHAR},
+      <if test="noticeTitle != null" >
+        #{noticeTitle,jdbcType=VARCHAR},
       </if>
-      <if test="notice_content != null" >
-        #{notice_content,jdbcType=VARCHAR},
+      <if test="noticeContent != null" >
+        #{noticeContent,jdbcType=VARCHAR},
       </if>
-      <if test="edit_time != null" >
-        #{edit_time,jdbcType=TIMESTAMP},
+      <if test="editTime != null" >
+        #{editTime,jdbcType=TIMESTAMP},
       </if>
       <if test="editor != null" >
         #{editor,jdbcType=VARCHAR},
@@ -147,25 +114,23 @@
       <if test="sort != null" >
         #{sort,jdbcType=INTEGER},
       </if>
-      <if test="course_id != null" >
-        #{course_id,jdbcType=INTEGER},
-      </if>
-      <if test="notice_type != null" >
-        #{notice_type,jdbcType=VARCHAR},
+      <if test="noticeType != null" >
+        #{noticeType,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.cz.model.Notice" >
     update notice
     <set >
-      <if test="notice_title != null" >
-        notice_title = #{notice_title,jdbcType=VARCHAR},
+      <if test="noticeTitle != null" >
+        notice_title = #{noticeTitle,jdbcType=VARCHAR},
       </if>
-      <if test="notice_content != null" >
-        notice_content = #{notice_content,jdbcType=VARCHAR},
+      <if test="noticeContent != null" >
+        notice_content = #{noticeContent,jdbcType=VARCHAR},
       </if>
-      <if test="edit_time != null" >
-        edit_time = #{edit_time,jdbcType=TIMESTAMP},
+      <if test="editTime != null" >
+        edit_time = #{editTime,jdbcType=TIMESTAMP},
       </if>
       <if test="editor != null" >
         editor = #{editor,jdbcType=VARCHAR},
@@ -176,25 +141,21 @@
       <if test="sort != null" >
         sort = #{sort,jdbcType=INTEGER},
       </if>
-      <if test="course_id != null" >
-        course_id = #{course_id,jdbcType=INTEGER},
-      </if>
-      <if test="notice_type != null" >
-        notice_type = #{notice_type,jdbcType=VARCHAR},
+      <if test="noticeType != null" >
+        notice_type = #{noticeType,jdbcType=VARCHAR},
       </if>
     </set>
-    where notice_id = #{notice_id,jdbcType=INTEGER}
+    where notice_id = #{noticeId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.cz.model.Notice" >
     update notice
-    set notice_title = #{notice_title,jdbcType=VARCHAR},
-      notice_content = #{notice_content,jdbcType=VARCHAR},
-      edit_time = #{edit_time,jdbcType=TIMESTAMP},
+    set notice_title = #{noticeTitle,jdbcType=VARCHAR},
+      notice_content = #{noticeContent,jdbcType=VARCHAR},
+      edit_time = #{editTime,jdbcType=TIMESTAMP},
       editor = #{editor,jdbcType=VARCHAR},
       status = #{status,jdbcType=VARCHAR},
       sort = #{sort,jdbcType=INTEGER},
-      course_id = #{course_id,jdbcType=INTEGER},
-      notice_type = #{notice_type,jdbcType=VARCHAR}
-    where notice_id = #{notice_id,jdbcType=INTEGER}
+      notice_type = #{noticeType,jdbcType=VARCHAR}
+    where notice_id = #{noticeId,jdbcType=INTEGER}
   </update>
 </mapper>
