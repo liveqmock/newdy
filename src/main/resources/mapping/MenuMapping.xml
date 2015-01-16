@@ -220,6 +220,7 @@
     </set>
     where menu_id = #{menu_id,jdbcType=INTEGER}
   </update>
+  
   <update id="updateByPrimaryKey" parameterType="com.cz.model.Menu" >
     update menu
     set menu_name = #{menu_name,jdbcType=VARCHAR},
