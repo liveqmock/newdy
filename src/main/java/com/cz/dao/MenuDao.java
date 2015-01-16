@@ -27,4 +27,6 @@ public interface MenuDao {
      * @return
      */
     List<Menu> getMenuByParentId(Map map);
+
+    List<Menu> getSuperAdminMenu();
 }

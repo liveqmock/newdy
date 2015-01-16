@@ -28,32 +28,32 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public int deleteByPrimaryKey(Integer menu_id) {
-        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+        return menuDao.deleteByPrimaryKey(menu_id);  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public int insert(Menu record) {
-        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+    public int insert(Menu menu) {
+        return menuDao.insert(menu);  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public int insertSelective(Menu record) {
-        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+    public int insertSelective(Menu menu) {
+        return menuDao.insertSelective(menu);  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
     public Menu selectByPrimaryKey(Integer menu_id) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return menuDao.selectByPrimaryKey(menu_id);  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public int updateByPrimaryKeySelective(Menu record) {
-        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+    public int updateByPrimaryKeySelective(Menu menu) {
+        return menuDao.updateByPrimaryKeySelective(menu);  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public int updateByPrimaryKey(Menu record) {
-        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+    public int updateByPrimaryKey(Menu menu) {
+        return menuDao.updateByPrimaryKey(menu);  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     /**
@@ -67,23 +67,30 @@ public class MenuServiceImpl implements MenuService {
         Map<String, Object> map = new HashMap<String, Object>();
         List<Menu> topMenu = menuDao.getTopMenu(userId);
         map.put("topMenu",topMenu);
-        for(int i=0;i<topMenu.size();i++){
-            // 遍历一级菜单 查询出二级菜单
-            System.out.println(topMenu.get(i).getMenu_name());
-            // getMenuByParentId(topMenu.get(i).getMenu_id());
-        }
         return map;
     }
 
     /**
-     * 根据用户获取用户菜单 List
+     * 根据用户Id获取用户菜单 List
      * @param userId
      * @return
      */
     @Override
     public List<Menu> getTopMenuByUserId(Integer userId){
-
+        if(userId==2){
+            return menuDao.getSuperAdminMenu();
+        }
         return menuDao.getTopMenu(userId);
+        // return menuDao.getSuperAdminMenu();
+    }
+
+    /**
+     * 获取超级管理员的菜单
+     * @return
+     */
+    @Override
+    public List<Menu> getSuperAdminMenu(){
+        return menuDao.getSuperAdminMenu();
     }
 
     /**

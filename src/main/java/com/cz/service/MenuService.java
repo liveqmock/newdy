@@ -32,4 +32,6 @@ public interface MenuService {
     List<Menu> getTopMenuByUserId(Integer userId);
 
     List<Menu> getMenuByParentId(Integer menu_id);
+
+    List<Menu> getSuperAdminMenu();
 }

@@ -8,6 +8,8 @@ import com.cz.utils.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,6 +34,57 @@ public class MenuController extends BaseController {
 
     @Autowired
     private MenuService menuService;
+
+
+    /**
+     * 添加菜单
+     * @param menu
+     * @return
+     */
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @ResponseBody
+    public Map addMenu(Menu menu,HttpServletRequest request)
+    {
+        Map mapResponse = new HashMap();
+        try {
+            menuService.insert(menu);
+            mapResponse.put("code", 200);
+            logger.info("修改用户信息成功");
+        } catch (Exception e) {
+            logger.error("修改用户信息失败" + e);
+            mapResponse.put("code", 201);
+            e.printStackTrace();
+        }
+        return mapResponse;
+    }
+
+    /**
+     * 修改菜单信息
+     * @param menu
+     * @return
+     */
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    @ResponseBody
+    public Map editMenu(Menu menu,HttpServletRequest request)
+    {
+        Map mapResponse = new HashMap();
+        try {
+            menuService.updateByPrimaryKey(menu);
+            mapResponse.put("code", 200);
+            logger.info("修改用户信息成功");
+        } catch (Exception e) {
+            logger.error("修改用户信息失败" + e);
+            mapResponse.put("code", 201);
+            e.printStackTrace();
+        }
+        return mapResponse;
+    }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    @ResponseBody
+    public int deleteUser(HttpServletRequest request,String menuId){
+        return  menuService.deleteByPrimaryKey(Integer.parseInt(menuId));
+    }
 
     /**
      * 获取主菜单

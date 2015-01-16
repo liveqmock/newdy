@@ -246,4 +246,8 @@
     SELECT * from menu m WHERE m.parent_id = ${menu_id}
   </select>
 
+  <select id="getSuperAdminMenu" resultType="com.cz.model.Menu">
+    SELECT m.menu_id,m.menu_name from menu m WHERE m.parent_id = 0 AND m.status =1
+  </select>
+
 </mapper>
