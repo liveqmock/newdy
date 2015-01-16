@@ -36,7 +36,7 @@
 							</td>
 						</tr>
 						<tr>
-							<td colspan="2"><input class="w230" type="text" name="username" id="username"
+							<td colspan="2"><input class="w230" type="text" name="userName" id="userName"
 								placeholder="请输入登录账号" /></td>
 						</tr>
 						<tr>
