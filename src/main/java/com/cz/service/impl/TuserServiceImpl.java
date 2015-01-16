@@ -21,34 +21,33 @@ public class TuserServiceImpl implements TuserService {
 
     @Autowired
     TuserDao tuserDao;
+
     @Override
-    public String addInfo(Tuser addInfo) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public int addInfo(Tuser tuser) {
+        return tuserDao.insert(tuser);
     }
 
     @Override
     public PageUtil<Tuser> getAllTuserPageList(PageUtil<Tuser> pageUtil) {
         List<Tuser> list=tuserDao.getAllTuserPageList(pageUtil);
-        System.out.println("list======="+list);
         int total=tuserDao.getAllTuserTotal(pageUtil);
-        System.out.println("total======="+total);
         pageUtil.setTotalRecord(total);
         pageUtil.setResults(list);
         return pageUtil;
     }
 
     @Override
-    public String delete(String id) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public int delete(String id) {
+        return tuserDao.deleteByPrimaryKey(Integer.parseInt(id));
     }
 
     @Override
     public Tuser findById(String id) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return tuserDao.selectByPrimaryKey(Integer.parseInt(id));
     }
 
     @Override
-    public String update(Tuser addInfo) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public int update(Tuser tuser) {
+        return tuserDao.updateByPrimaryKey(tuser);
     }
 }

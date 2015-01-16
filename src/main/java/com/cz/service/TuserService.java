@@ -14,13 +14,13 @@ import java.util.List;
  */
 public interface TuserService {
 
-    String addInfo(Tuser addInfo);
+    int addInfo(Tuser tuser);
 
     PageUtil<Tuser> getAllTuserPageList(PageUtil<Tuser> pageUtil);
 
-    String delete(String id);
+    int delete(String id);
 
     Tuser findById(String id);
 
-    String update(Tuser addInfo);
+    int update(Tuser tuser);
 }
