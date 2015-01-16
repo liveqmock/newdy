@@ -21,4 +21,6 @@ public interface TuserDao {
     int updateByPrimaryKeySelective(Tuser record);
 
     int updateByPrimaryKey(Tuser record);
+
+    Tuser getTuserByUserName(String userName);
 }

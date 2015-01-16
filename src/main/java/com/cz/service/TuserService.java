@@ -23,4 +23,6 @@ public interface TuserService {
     Tuser findById(String id);
 
     int update(Tuser tuser);
+
+    Tuser getTuserByUserName(String userName);
 }

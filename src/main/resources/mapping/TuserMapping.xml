@@ -304,4 +304,8 @@
       head_portrait = #{headPortrait,jdbcType=VARCHAR}
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
+
+  <select id="getTuserByUserName" resultType="com.cz.model.Tuser" parameterType="java.lang.String">
+    SELECT t.* FROM tuser t WHERE t.status = 1 AND t.user_name = #{userName};
+  </select>
 </mapper>

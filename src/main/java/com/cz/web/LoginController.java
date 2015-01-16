@@ -7,7 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.cz.model.Tuser;
+import com.cz.service.TuserService;
 import com.cz.utils.BaseController;
+import com.cz.utils.Constant;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -22,6 +25,9 @@ import com.alibaba.druid.util.StringUtils;
 @RequestMapping
 public class LoginController extends BaseController {
 
+	@Autowired
+	private TuserService tuserService;
+
 	/**
 	 *  用户登录
 	 * @param request
@@ -35,31 +41,35 @@ public class LoginController extends BaseController {
 			Tuser userInfo, HttpServletResponse response, String userLogo) {
 		try {
 			Tuser userInfoTmp = getCurrentUser(request);
-            request.getSession().setAttribute("userName","Admin");
 			if (userInfoTmp != null) {
 				ModelAndView model = new ModelAndView();
-				model.setViewName("redirect:/tuser/platform");
+				model.setViewName("manager/index");
 				return model;
 			} else {
-				if ("0".equalsIgnoreCase(userLogo)) {
-					// 管理员登录
-					if (userInfo == null
-							|| (StringUtils.isEmpty(userInfo.getUserName()) && StringUtils
-									.isEmpty(userInfo.getPassword()))) {
-						userInfo = getCurrentUser(request);
+				if (userInfo == null
+						|| (StringUtils.isEmpty(userInfo.getUserName()) && StringUtils
+								.isEmpty(userInfo.getPassword()))) {
+					userInfo = getCurrentUser(request);
+					request.setAttribute("msg", "用户名或者密码不能为空");
+					request.getRequestDispatcher("/login.jsp").forward(request,response);
+				}else{
+					userInfoTmp = tuserService.getTuserByUserName(userInfo.getUserName());
+					if(userInfoTmp!=null){
+						if(userInfo.getPassword().equals(userInfoTmp.getPassword())){
+							request.getSession().setAttribute(Constant.USERINFO,userInfoTmp);
+							ModelAndView model = new ModelAndView();
+							model.setViewName("manager/index");
+							return model;
+						}else{
+							request.setAttribute("msg", "密码不正确");
+							request.getRequestDispatcher("/login.jsp").forward(request,response);
+						}
+					}else{
+						request.setAttribute("msg", "用户名不正确");
+						request.getRequestDispatcher("/login.jsp").forward(request,response);
 					}
-					request.setAttribute("msg", "");
-					request.getRequestDispatcher("/login.jsp").forward(request,response);
-				} else if ("1".equalsIgnoreCase(userLogo)) {
-					// 非管理员登陆
-					ModelAndView model = new ModelAndView();
-					model.setViewName("/manager/index");
-                    return model;
-				} else {
-					// 意外事件
-					request.setAttribute("msg", "");
-					request.getRequestDispatcher("/login.jsp").forward(request,response);
 				}
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

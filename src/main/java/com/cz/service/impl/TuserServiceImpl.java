@@ -50,4 +50,9 @@ public class TuserServiceImpl implements TuserService {
     public int update(Tuser tuser) {
         return tuserDao.updateByPrimaryKey(tuser);
     }
+
+    @Override
+    public Tuser getTuserByUserName(String userName) {
+        return tuserDao.getTuserByUserName(userName);
+    }
 }
