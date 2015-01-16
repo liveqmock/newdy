@@ -82,6 +82,7 @@ public class MenuServiceImpl implements MenuService {
      */
     @Override
     public List<Menu> getTopMenuByUserId(Integer userId){
+
         return menuDao.getTopMenu(userId);
     }
 
@@ -91,6 +92,8 @@ public class MenuServiceImpl implements MenuService {
      * @return
      */
     public List<Menu> getMenuByParentId(Integer menuId){
-        return menuDao.getMenuByParentId(menuId);
+        Map<String,Integer> map = new HashMap<String,Integer>();
+        map.put("menu_id",menuId);
+        return menuDao.getMenuByParentId(map);
     }
 }

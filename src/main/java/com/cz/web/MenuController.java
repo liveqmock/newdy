@@ -48,8 +48,6 @@ public class MenuController extends BaseController {
         for(Menu menu:menuTopList){
             map.put(menu.getMenu_id(),menuService.getMenuByParentId(menu.getMenu_id()));
         }
-        System.out.println("menuTopList:---"+menuTopList);
-        System.out.println("map:---"+map);
         ModelAndView model = new ModelAndView();
         model.addObject("map",map);
         model.addObject("menuTopList",menuTopList);

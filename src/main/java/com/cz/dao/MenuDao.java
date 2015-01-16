@@ -2,6 +2,8 @@ package com.cz.dao;
 
 import com.cz.model.Menu;
 import java.util.List;
+import java.util.Map;
+
 public interface MenuDao {
 
     int deleteByPrimaryKey(Integer menu_id);
@@ -19,4 +21,10 @@ public interface MenuDao {
     List<Menu> getTopMenu(Integer userId);
 
     List<Menu> getMenuByParentId(Integer menu_id);
+
+    /**
+     * @param map
+     * @return
+     */
+    List<Menu> getMenuByParentId(Map map);
 }
