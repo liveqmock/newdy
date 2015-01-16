@@ -3,13 +3,13 @@ package com.cz.model;
 import java.util.Date;
 
 public class Notice {
-    private Integer notice_id;
+    private Integer noticeId;
 
-    private String notice_title;
+    private String noticeTitle;
 
-    private String notice_content;
+    private String noticeContent;
 
-    private Date edit_time;
+    private Date editTime;
 
     private String editor;
 
@@ -17,40 +17,38 @@ public class Notice {
 
     private Integer sort;
 
-    private Integer course_id;
+    private String noticeType;
 
-    private String notice_type;
-
-    public Integer getNotice_id() {
-        return notice_id;
+    public Integer getNoticeId() {
+        return noticeId;
     }
 
-    public void setNotice_id(Integer notice_id) {
-        this.notice_id = notice_id;
+    public void setNoticeId(Integer noticeId) {
+        this.noticeId = noticeId;
     }
 
-    public String getNotice_title() {
-        return notice_title;
+    public String getNoticeTitle() {
+        return noticeTitle;
     }
 
-    public void setNotice_title(String notice_title) {
-        this.notice_title = notice_title == null ? null : notice_title.trim();
+    public void setNoticeTitle(String noticeTitle) {
+        this.noticeTitle = noticeTitle == null ? null : noticeTitle.trim();
     }
 
-    public String getNotice_content() {
-        return notice_content;
+    public String getNoticeContent() {
+        return noticeContent;
     }
 
-    public void setNotice_content(String notice_content) {
-        this.notice_content = notice_content == null ? null : notice_content.trim();
+    public void setNoticeContent(String noticeContent) {
+        this.noticeContent = noticeContent == null ? null : noticeContent.trim();
     }
 
-    public Date getEdit_time() {
-        return edit_time;
+    public Date getEditTime() {
+        return editTime;
     }
 
-    public void setEdit_time(Date edit_time) {
-        this.edit_time = edit_time;
+    public void setEditTime(Date editTime) {
+        this.editTime = editTime;
     }
 
     public String getEditor() {
@@ -77,19 +75,11 @@ public class Notice {
         this.sort = sort;
     }
 
-    public Integer getCourse_id() {
-        return course_id;
+    public String getNoticeType() {
+        return noticeType;
     }
 
-    public void setCourse_id(Integer course_id) {
-        this.course_id = course_id;
-    }
-
-    public String getNotice_type() {
-        return notice_type;
-    }
-
-    public void setNotice_type(String notice_type) {
-        this.notice_type = notice_type == null ? null : notice_type.trim();
+    public void setNoticeType(String noticeType) {
+        this.noticeType = noticeType == null ? null : noticeType.trim();
     }
 }
