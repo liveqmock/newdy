@@ -5,6 +5,7 @@ package com.cz.web;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.cz.model.Tuser;
 import com.cz.service.TuserService;
@@ -77,7 +78,29 @@ public class LoginController extends BaseController {
 		return null;
 
 	}
-	
+
+	/**
+	 * 用户退出登陆
+	 * @param request
+	 * @param response
+	 */
+	@RequestMapping(value = "/loginOut")
+	public void loginOut(HttpServletRequest request,HttpServletResponse response){
+		try {
+			Tuser userInfo = getCurrentUser(request);
+			if (userInfo == null) {
+				response.sendRedirect("/login.jsp");
+			} else {
+				HttpSession session = request.getSession();
+				session.removeAttribute(Constant.USERINFO);
+				//session.invalidate();
+				response.sendRedirect("/login.jsp");
+			}
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+
+	}
 	/**
 	 * 用户访问网站首页
 	 * @return
