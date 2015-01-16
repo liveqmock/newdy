@@ -1,64 +1,84 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
+<!doctype html>
 <html>
-	<head>
-		<%
-			String path = request.getContextPath();
-			String basePath = request.getScheme() + "://"
-					+ request.getServerName() + ":" + request.getServerPort()
-					+ path;
-			request.setAttribute("basePath", basePath);
-			String flag = request.getParameter("flag");
-			request.setAttribute("flag", flag);
-		%>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta content="IE=9" http-equiv="X-UA-Compatible">
-		<title>管理系统</title>
-		<link href="${basePath}/css/user/third/third.css" rel="stylesheet"
-			type="text/css" />
-		<link href="${basePath}/css/public.css" rel="stylesheet"
-			type="text/css" />
-		<link href="${basePath}/css/sub.css" rel="stylesheet" type="text/css" />
-	</head>
+<head>
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
+<meta charset="utf-8">
+<title>XXX</title>
+<link href='${ctx}/css/login.css' rel="stylesheet">
+<script src="${ctx}/js/jquery-1.8.2.min.js"></script>
+<script src="${ctx}/js/jquery.placeholderui.js"></script>
+<style type="text/css">
 
-	<body
-		style="background:url(${basePath}/image/user/bg0.png) no-repeat #130e16 center top;">
-		<div class="login">
-			<h4 class="login_title1">
-			</h4>
-			<div class="login_content">
-				<form method="post" action="${basePath}/login">
-					<span class="login_radio"> <label
-							style="float: left; margin-right: 5px;">
-							登录身份：
-						</label> <input type="radio" name="userLogo" value="0" checked="checked" /><span
-						style="color: #ffffff">管理员</span> <input type="radio"
-							name="userLogo" value="1" /><span style="color: #ffffff">普通会员</span>
-					</span>
-					<div>
-						<label>
-							用户名：
-						</label>
-						<input type="text" name="userName" />
-					</div>
-					<div>
-						<label>
-							密码：
-						</label>
-						<input type="password" name="password" />
-					</div>
-					<%--<div style="color: red"></div>--%>
-					<div class="clear" style="height: 10px; overflow: hidden;"></div>
-					<p class="login_p" style="color: red">
-						<c:if test="${flag=='1'}">
-							<c:out value="用户被禁用或者删除" />
-						</c:if>
-						<c:if test="${flag!='1'}">${msg}</c:if>
-					</p>
-					<input type="submit" class="login_button1" value="登录">
+</style>
+</head>
+<body>
+	<div id="login">
+		<div class="header">
+			<div class="wrap">
+				<img src="${ctx}/images/logo.png" />
+				<p>XXX</p>
+			</div>
+		</div>
+		<div class="bgd">
+			<div class="wrap relative">
+				<form action="${ctx}/login" method="post" id="loginForm">
+					<table class="absolute">
+						<tr class="title">
+							<td colspan="2">
+							<div class="relative"><c:if test="${msg == null}">登录</c:if>
+							<c:if test="${msg != null}">
+							<p class="absolute check">${msg}</p>
+							</c:if>
+							</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="2"><input class="w230" type="text" name="username" id="username"
+								placeholder="请输入登录账号" /></td>
+						</tr>
+						<tr>
+							<td colspan="2"><input class="w230" type="password" name="password"
+								id="password" placeholder="请输入密码" /></td>
+						</tr>
+						<tr>
+							<td width="108px"><input class="w118" type="text" placeholder="请输入验证码" name="validateCode" i="verify" onkeydown="if(event.keyCode == 13){this.focus();login();}"/></td>
+							<td><img src="${ctx}/getImage" id="v_image" title="点击更换" onclick="javascript:reloadVerifyCode('${ctx}/getImage',this);" style="height: 30px;width: 71px;"/></td>
+						</tr>
+						<tr class="h50">
+							<td><input type="checkbox" class="checkbox" />记住密码</td>
+							<td class="forget"><a href="" target="_blank">忘记密码？</a></td>
+						</tr>
+						<tr>
+							<td colspan="2"><input class="login" type="button" value="登 录" id="smitBtn" /></td>
+						</tr>
+					</table>
 				</form>
 			</div>
 		</div>
-	</body>
+		<!-- <div class="footer">
+			<div class="wrap">
+				<p>
+					<a href="">关于中票盟</a> <a href="">中票盟官方微博</a> <span>中票盟版权所有</span>
+				</p>
+			</div>
+		</div> -->
+	</div>
+	<script type="text/javascript">
+			$('form').PlaceholderUI();
+			$("#smitBtn").click(function(){
+				$("#loginForm").submit();
+			});
+			 function login(){
+				  $('#loginForm').submit();
+			  }
+			  function reloadVerifyCode(url,obj)  
+			  {  
+			     var timenow = new Date().getTime();                            
+			     obj.src=url+"?d="+timenow;  
+			  }
+	</script>
+</body>
 </html>
