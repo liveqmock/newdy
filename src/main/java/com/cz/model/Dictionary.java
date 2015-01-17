@@ -2,7 +2,8 @@ package com.cz.model;
 
 import java.util.Date;
 
-public class DataDictionary {
+public class Dictionary {
+
     private String data_id;
 
     private String data_name;

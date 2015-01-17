@@ -71,17 +71,17 @@
   <sql id="Base_Column_List" >
     message_id, message_title, message, edit_time, editor, sort, status
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="getMessageById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from message
     where message_id = #{messageId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteMessage" parameterType="java.lang.Integer" >
     delete from message
     where message_id = #{messageId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.cz.model.Message" >
+  <insert id="addMessage" parameterType="com.cz.model.Message" >
     insert into message (message_id, message_title, message, 
       edit_time, editor, sort, 
       status)
@@ -162,7 +162,7 @@
     </set>
     where message_id = #{messageId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.cz.model.Message" >
+  <update id="updateMessage" parameterType="com.cz.model.Message" >
     update message
     set message_title = #{messageTitle,jdbcType=VARCHAR},
       message = #{message,jdbcType=VARCHAR},

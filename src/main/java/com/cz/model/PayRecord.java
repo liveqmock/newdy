@@ -2,7 +2,7 @@ package com.cz.model;
 
 import java.util.Date;
 
-public class PayRecords {
+public class PayRecord {
     private Integer pay_record_id;
 
     private Integer user_id;

@@ -1,9 +1,15 @@
-package com.cz.dao;
+package com.cz.service;
 
 import com.cz.model.Role;
 import com.cz.utils.PageUtil;
 
-public interface RoleDao {
+/**
+ * Created by ChangYY
+ * 2015/1/17
+ * 20:04
+ * TO DO What
+ */
+public interface RoleService {
 
     int addRole(Role role);
 
@@ -14,4 +20,5 @@ public interface RoleDao {
     Role getRoleById(String roleId);
 
     PageUtil<Role> getAllRolePageList(PageUtil<Role> pageUtil);
+
 }

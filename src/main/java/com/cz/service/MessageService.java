@@ -1,13 +1,15 @@
-package com.cz.dao;
+package com.cz.service;
 
 import com.cz.model.Message;
-
-import java.util.List;
-
 import com.cz.utils.PageUtil;
-import org.apache.ibatis.annotations.Param;
 
-public interface MessageDao {
+/**
+ * Created by ChangYY
+ * 2015/1/17
+ * 20:06
+ * TO DO What
+ */
+public interface MessageService {
 
     int addMessage(Message message);
 

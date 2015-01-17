@@ -51,18 +51,18 @@
     editor, status, sort, isShow
   </sql>
 
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="getProductById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from product
     where product_id = #{productId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteProduct" parameterType="java.lang.Integer" >
     delete from product
     where product_id = #{productId,jdbcType=INTEGER}
   </delete>
 
-  <insert id="insert" parameterType="com.cz.model.Product" >
+  <insert id="addProduct" parameterType="com.cz.model.Product" >
     insert into product (product_id, product_name, product_level, 
       parentId, url, desc, 
       isNew, isHot, edit_time, 
@@ -202,7 +202,7 @@
     </set>
     where product_id = #{productId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.cz.model.Product" >
+  <update id="updateProduct" parameterType="com.cz.model.Product" >
     update product
     set product_name = #{productName,jdbcType=VARCHAR},
       product_level = #{productLevel,jdbcType=VARCHAR},

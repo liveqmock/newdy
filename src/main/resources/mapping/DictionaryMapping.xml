@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.cz.dao.DataDictionaryDao" >
-  <resultMap id="BaseResultMap" type="com.cz.model.DataDictionary" >
+<mapper namespace="com.cz.dao.DictionaryDao" >
+  <resultMap id="BaseResultMap" type="com.cz.model.Dictionary" >
     <id column="data_id" property="data_id" jdbcType="VARCHAR" />
     <result column="data_name" property="data_name" jdbcType="VARCHAR" />
     <result column="data_value" property="data_value" jdbcType="CHAR" />
@@ -45,17 +45,17 @@
   <sql id="Base_Column_List" >
     data_id, data_name, data_value, sort, status, data_pid, edit_time, editor, show_left
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="getDictionaryById" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
     from data_dictionary
     where data_id = #{data_id,jdbcType=VARCHAR}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="deleteDictionary" parameterType="java.lang.String" >
     delete from data_dictionary
     where data_id = #{data_id,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.cz.model.DataDictionary" >
+  <insert id="addDictionary" parameterType="com.cz.model.Dictionary" >
     insert into data_dictionary (data_id, data_name, data_value, 
       sort, status, data_pid, 
       edit_time, editor, show_left
@@ -65,7 +65,7 @@
       #{edit_time,jdbcType=TIMESTAMP}, #{editor,jdbcType=VARCHAR}, #{show_left,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.cz.model.DataDictionary" >
+  <insert id="insertSelective" parameterType="com.cz.model.Dictionary" >
     insert into data_dictionary
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="data_id != null" >
@@ -126,7 +126,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.cz.model.DataDictionary" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.cz.model.Dictionary" >
     update data_dictionary
     <set >
       <if test="data_name != null" >
@@ -156,7 +156,7 @@
     </set>
     where data_id = #{data_id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.cz.model.DataDictionary" >
+  <update id="updateDictionary" parameterType="com.cz.model.Dictionary" >
     update data_dictionary
     set data_name = #{data_name,jdbcType=VARCHAR},
       data_value = #{data_value,jdbcType=CHAR},

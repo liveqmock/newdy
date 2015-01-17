@@ -1,9 +1,15 @@
-package com.cz.dao;
+package com.cz.service;
 
 import com.cz.model.Product;
 import com.cz.utils.PageUtil;
 
-public interface ProductDao {
+/**
+ * Created by ChangYY
+ * 2015/1/17
+ * 20:07
+ * TO DO What
+ */
+public interface ProductService {
 
     int addProduct(Product product);
 

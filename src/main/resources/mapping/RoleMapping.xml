@@ -72,18 +72,18 @@
     role_id, role_name, role_desc, role_function, status, edit_time, editor
   </sql>
 
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="getRoleById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from role
     where role_id = #{role_id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteRole" parameterType="java.lang.Integer" >
     delete from role
     where role_id = #{role_id,jdbcType=INTEGER}
   </delete>
 
-  <insert id="insert" parameterType="com.cz.model.Role" >
+  <insert id="addRole" parameterType="com.cz.model.Role" >
     insert into role (role_id, role_name, role_desc, 
       role_function, status, edit_time, 
       editor)
@@ -165,7 +165,7 @@
     </set>
     where role_id = #{role_id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.cz.model.Role" >
+  <update id="updateRole" parameterType="com.cz.model.Role" >
     update role
     set role_name = #{role_name,jdbcType=VARCHAR},
       role_desc = #{role_desc,jdbcType=VARCHAR},
