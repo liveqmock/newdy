@@ -20,6 +20,7 @@
 //            $(document).ready(function(){
 //
 //            });
+			<!--初始化用户菜单 -->
             function initTopMenu(){
                 $.ajax({
                     url:'menu/getTopMenu.do',
@@ -32,6 +33,13 @@
                     }
                 });
             }
+
+			<!--用户退出登陆 -->
+			function loginOut(){
+				if(confirm("确定退出？")){
+					window.location.href="<%=basePath%>/loginOut";
+				}
+			}
         </script>
 	</head>
 
@@ -45,7 +53,7 @@
 				<div class="logo"></div>
 				<p class="welcome">
 					平台管理系统欢迎您，${sessionScope.userName}
-					<a href="">[退出]</a>
+					<a href="javascript:loginOut();">[退出平台]</a>
 				</p>
 			</div>
 		</div>

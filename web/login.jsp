@@ -6,7 +6,7 @@
 <head>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <meta charset="utf-8">
-<title>XXX</title>
+<title>管理平台</title>
 <link href='${ctx}/css/login.css' rel="stylesheet">
 <script src="${ctx}/js/jquery-1.8.2.min.js"></script>
 <script src="${ctx}/js/jquery.placeholderui.js"></script>

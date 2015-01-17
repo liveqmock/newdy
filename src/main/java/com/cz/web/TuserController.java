@@ -124,7 +124,7 @@ public class TuserController extends BaseController {
             page.setPageNo(num);
             page.setQueryParam(tuser);
             page = tuserService.getAllTuserPageList(page);
-            Map<String, Object> map = new HashMap<>();
+            Map<String, Object> map = new HashMap<String, Object>();
             model.addObject(page);
             model.setViewName("/user/user_result");
             return model;

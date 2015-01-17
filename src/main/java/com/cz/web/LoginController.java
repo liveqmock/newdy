@@ -11,6 +11,7 @@ import com.cz.model.Tuser;
 import com.cz.service.TuserService;
 import com.cz.utils.BaseController;
 import com.cz.utils.Constant;
+import com.cz.utils.LogUtils;
 import com.cz.utils.RandomValidateCode;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,8 @@ import com.alibaba.druid.util.StringUtils;
 @Controller
 @RequestMapping
 public class LoginController extends BaseController {
+
+	private LogUtils logger = LogUtils.getLogUtils(LoginController.class);
 
 	@Autowired
 	private TuserService tuserService;
@@ -106,6 +109,7 @@ public class LoginController extends BaseController {
 	@RequestMapping(value = "/loginOut")
 	public void loginOut(HttpServletRequest request,HttpServletResponse response){
 		try {
+			logger.info("用户退出登陆请求========");
 			Tuser userInfo = getCurrentUser(request);
 			if (userInfo == null) {
 				response.sendRedirect("/login.jsp");
