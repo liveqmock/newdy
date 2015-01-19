@@ -17,29 +17,29 @@ import org.springframework.stereotype.Service;
 public class OrderServiceImpl implements OrderService {
 
     @Autowired
-    OrderDao payRecordDao;
+    OrderDao orderDao;
     @Override
-    public int addPayRecord(Order payRecord) {
-        return payRecordDao.addPayRecord(payRecord);
+    public int addOrder(Order order) {
+        return orderDao.addOrder(order);
     }
 
     @Override
-    public int deletePayRecord(String payRecordId) {
-        return payRecordDao.deletePayRecord(payRecordId);
+    public int deleteOrder(String orderId) {
+        return orderDao.deleteOrder(orderId);
     }
 
     @Override
-    public int updatePayRecord(Order payRecord) {
-        return payRecordDao.updatePayRecord(payRecord);
+    public int updateOrder(Order order) {
+        return orderDao.updateOrder(order);
     }
 
     @Override
-    public Order getPayRecordById(String payRecordId) {
-        return payRecordDao.getPayRecordById(payRecordId);
+    public Order getOrderById(String orderId) {
+        return orderDao.getOrderById(orderId);
     }
 
     @Override
-    public PageUtil<Order> getAllPayRecordPageList(PageUtil<Order> pageUtil) {
-        return payRecordDao.getAllPayRecordPageList(pageUtil);
+    public PageUtil<Order> getAllOrderPageList(PageUtil<Order> pageUtil) {
+        return orderDao.getAllOrderPageList(pageUtil);
     }
 }

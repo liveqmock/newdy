@@ -76,18 +76,18 @@
     edit_time, editor
   </sql>
 
-  <select id="getPayRecordById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="getOrder" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from pay_records
     where pay_record_id = #{pay_record_id,jdbcType=INTEGER}
   </select>
-  <delete id="deletePayRecord" parameterType="java.lang.Integer" >
+  <delete id="deleteOrder" parameterType="java.lang.Integer" >
     delete from pay_records
     where pay_record_id = #{pay_record_id,jdbcType=INTEGER}
   </delete>
 
-  <insert id="addPayRecord" parameterType="com.cz.model.Order" >
+  <insert id="addOrder" parameterType="com.cz.model.Order" >
     insert into pay_records (pay_record_id, user_id, pay_ip, 
       pay_money, pay_status, pay_date, 
       pay_order_no, pay_serial_no, edit_time, 
@@ -97,6 +97,7 @@
       #{pay_order_no,jdbcType=VARCHAR}, #{pay_serial_no,jdbcType=VARCHAR}, #{edit_time,jdbcType=TIMESTAMP}, 
       #{editor,jdbcType=VARCHAR})
   </insert>
+  <!--
   <insert id="insertSelective" parameterType="com.cz.model.Order" >
     insert into pay_records
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -197,7 +198,8 @@
     </set>
     where pay_record_id = #{pay_record_id,jdbcType=INTEGER}
   </update>
-  <update id="updatePayRecord" parameterType="com.cz.model.Order" >
+  -->
+  <update id="updateOrder" parameterType="com.cz.model.Order" >
     update pay_records
     set user_id = #{user_id,jdbcType=INTEGER},
       pay_ip = #{pay_ip,jdbcType=VARCHAR},

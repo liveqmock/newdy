@@ -36,17 +36,17 @@ public class OrderController extends BaseController {
 
     /**
      * 添加订单
-     * @param payRecord
+     * @param order
      * @param request
      * @return
      */
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
-    public Map addPayRecord(Order payRecord,HttpServletRequest request)
+    public Map addOrder(Order order,HttpServletRequest request)
     {
         Map mapResponse = new HashMap();
         try {
-            orderService.addPayRecord(payRecord);
+            orderService.addOrder(order);
             mapResponse.put("code", 200);
             logger.info("修改订单成功");
         } catch (Exception e) {
@@ -59,16 +59,16 @@ public class OrderController extends BaseController {
 
     /**
      * 修改订单订单
-     * @param payRecord
+     * @param order
      * @return
      */
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
-    public Map editPayRecord(Order payRecord,HttpServletRequest request)
+    public Map editOrder(Order order,HttpServletRequest request)
     {
         Map mapResponse = new HashMap();
         try {
-            orderService.updatePayRecord(payRecord);
+            orderService.updateOrder(order);
             mapResponse.put("code", 200);
             logger.info("修改订单成功");
         } catch (Exception e) {
@@ -82,15 +82,15 @@ public class OrderController extends BaseController {
     /**
      * 删除订单
      * @param request
-     * @param payRecordId
+     * @param orderId
      * @return
      */
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
-    public Map deletePayRecord(HttpServletRequest request,String payRecordId){
+    public Map deleteOrder(HttpServletRequest request,String orderId){
         Map mapResponse = new HashMap();
         try {
-            orderService.deletePayRecord(payRecordId);
+            orderService.deleteOrder(orderId);
             mapResponse.put("code", 200);
             logger.info("删除订单成功");
         } catch (Exception e) {
@@ -108,7 +108,7 @@ public class OrderController extends BaseController {
      */
     @RequestMapping(value = "/list", method = RequestMethod.POST)
     @ResponseBody
-    public ModelAndView listPayRecord(Order payRecord, String pageNo,HttpServletRequest request) {
+    public ModelAndView listOrder(Order order, String pageNo,HttpServletRequest request) {
         ModelAndView model = new ModelAndView();
         try {
             int num = 1;
@@ -117,11 +117,11 @@ public class OrderController extends BaseController {
             }
             PageUtil<Order> page = new PageUtil<Order>();
             page.setPageNo(num);
-            page.setQueryParam(payRecord);
-            page = orderService.getAllPayRecordPageList(page);
+            page.setQueryParam(order);
+            page = orderService.getAllOrderPageList(page);
             Map<String, Object> map = new HashMap<String, Object>();
             model.addObject(page);
-            model.setViewName("/payRecord/payRecord_list");
+            model.setViewName("/order/order_list");
             return model;
         } catch (Exception e) {
             e.printStackTrace();
@@ -135,29 +135,29 @@ public class OrderController extends BaseController {
      * @param ids
      * @return
      */
-    @RequestMapping(value = "/findPayRecordList")
+    @RequestMapping(value = "/findOrderList")
     @ResponseBody
-    public List<Order> findPayRecordList(Integer[] ids){
-        List<Order> payRecordList=null;
+    public List<Order> findOrderList(Integer[] ids){
+        List<Order> orderList=null;
         if(ids!=null&&ids.length>0){
-            // userPayRecordList=tuserService.findUserList(ids);
+            // userorderList=tuserService.findUserList(ids);
         }
-        return payRecordList;
+        return orderList;
     }
 
     /**
      * 根据订单ID获取详细订单
-     * @param payRecordId
+     * @param orderId
      * @return
      */
-    @RequestMapping(value = "/getPayRecord", method = RequestMethod.POST)
+    @RequestMapping(value = "/getOrder", method = RequestMethod.POST)
     @ResponseBody
-    public ModelAndView getPayRecord(String payRecordId) {
+    public ModelAndView getOrder(String orderId) {
         ModelAndView model = new ModelAndView();
-        Order payRecord = null;
+        Order order = null;
         try {
-            payRecord =  orderService.getPayRecordById(payRecordId);
-            model.addObject(payRecord);
+            order =  orderService.getOrderById(orderId);
+            model.addObject(order);
         } catch (Exception e) {
             e.printStackTrace();
         }

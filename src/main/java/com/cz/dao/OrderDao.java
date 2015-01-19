@@ -5,13 +5,13 @@ import com.cz.utils.PageUtil;
 
 public interface OrderDao {
 
-    int addPayRecord(Order payRecord);
+    int addOrder(Order order);
 
-    int deletePayRecord(String payRecordId);
+    int deleteOrder(String orderId);
 
-    int updatePayRecord(Order payRecord);
+    int updateOrder(Order order);
 
-    Order getPayRecordById(String payRecordId);
+    Order getOrderById(String orderId);
 
-    PageUtil<Order> getAllPayRecordPageList(PageUtil<Order> pageUtil);
+    PageUtil<Order> getAllOrderPageList(PageUtil<Order> pageUtil);
 }

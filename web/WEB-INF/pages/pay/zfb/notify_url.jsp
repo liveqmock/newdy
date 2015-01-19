@@ -18,9 +18,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
 <%@ page import="com.cz.pay.zfb.util.*"%>
+<%@ page import="com.cz.service.impl.OrderServiceImpl" %>
+<%@ page import="com.cz.service.OrderService" %>
 <%
 	//获取支付宝POST过来反馈信息
-	//OrderI orderI = new OrderImpl();
+	OrderService orderService = new OrderServiceImpl();
 	Map<String,String> params = new HashMap<String,String>();
 	Map requestParams = request.getParameterMap();
 	for (Iterator iter = requestParams.keySet().iterator(); iter.hasNext();) {
