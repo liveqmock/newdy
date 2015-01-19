@@ -103,9 +103,9 @@ public class InfoController extends BaseController {
         try {
             infoService.deleteInfo(infoId);
             mapResponse.put("code", 200);
-            logger.info("删除角色信息成功");
+            logger.info("删除信息成功");
         } catch (Exception e) {
-            logger.error("删除角色信息失败" + e);
+            logger.error("删除信息失败" + e);
             mapResponse.put("code", 201);
             e.printStackTrace();
         }
