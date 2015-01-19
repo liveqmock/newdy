@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cz.dao.OrderWayDao" >
+  <resultMap id="BaseResultMap" type="com.cz.model.OrderWay" >
+    <id column="pay_way_id" property="payWayId" jdbcType="INTEGER" />
+    <result column="pay_way_name" property="payWayName" jdbcType="VARCHAR" />
+    <result column="pay_way_desc" property="payWayDesc" jdbcType="VARCHAR" />
+    <result column="merchant_no" property="merchantNo" jdbcType="VARCHAR" />
+    <result column="check_code" property="checkCode" jdbcType="VARCHAR" />
+    <result column="secret_key" property="secretKey" jdbcType="VARCHAR" />
+    <result column="sign_code" property="signCode" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    <result column="editor" property="editor" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    pay_way_id, pay_way_name, pay_way_desc, merchant_no, check_code, secret_key, sign_code, 
+    status, sort, edit_time, editor
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from pay_way
+    where pay_way_id = #{payWayId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from pay_way
+    where pay_way_id = #{payWayId,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insert" parameterType="com.cz.model.OrderWay" >
+    insert into pay_way (pay_way_id, pay_way_name, pay_way_desc, 
+      merchant_no, check_code, secret_key, 
+      sign_code, status, sort, 
+      edit_time, editor)
+    values (#{payWayId,jdbcType=INTEGER}, #{payWayName,jdbcType=VARCHAR}, #{payWayDesc,jdbcType=VARCHAR}, 
+      #{merchantNo,jdbcType=VARCHAR}, #{checkCode,jdbcType=VARCHAR}, #{secretKey,jdbcType=VARCHAR}, 
+      #{signCode,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, 
+      #{editTime,jdbcType=TIMESTAMP}, #{editor,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cz.model.OrderWay" >
+    insert into pay_way
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="payWayId != null" >
+        pay_way_id,
+      </if>
+      <if test="payWayName != null" >
+        pay_way_name,
+      </if>
+      <if test="payWayDesc != null" >
+        pay_way_desc,
+      </if>
+      <if test="merchantNo != null" >
+        merchant_no,
+      </if>
+      <if test="checkCode != null" >
+        check_code,
+      </if>
+      <if test="secretKey != null" >
+        secret_key,
+      </if>
+      <if test="signCode != null" >
+        sign_code,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="editTime != null" >
+        edit_time,
+      </if>
+      <if test="editor != null" >
+        editor,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="payWayId != null" >
+        #{payWayId,jdbcType=INTEGER},
+      </if>
+      <if test="payWayName != null" >
+        #{payWayName,jdbcType=VARCHAR},
+      </if>
+      <if test="payWayDesc != null" >
+        #{payWayDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantNo != null" >
+        #{merchantNo,jdbcType=VARCHAR},
+      </if>
+      <if test="checkCode != null" >
+        #{checkCode,jdbcType=VARCHAR},
+      </if>
+      <if test="secretKey != null" >
+        #{secretKey,jdbcType=VARCHAR},
+      </if>
+      <if test="signCode != null" >
+        #{signCode,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="editTime != null" >
+        #{editTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="editor != null" >
+        #{editor,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.cz.model.OrderWay" >
+    update pay_way
+    <set >
+      <if test="payWayName != null" >
+        pay_way_name = #{payWayName,jdbcType=VARCHAR},
+      </if>
+      <if test="payWayDesc != null" >
+        pay_way_desc = #{payWayDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantNo != null" >
+        merchant_no = #{merchantNo,jdbcType=VARCHAR},
+      </if>
+      <if test="checkCode != null" >
+        check_code = #{checkCode,jdbcType=VARCHAR},
+      </if>
+      <if test="secretKey != null" >
+        secret_key = #{secretKey,jdbcType=VARCHAR},
+      </if>
+      <if test="signCode != null" >
+        sign_code = #{signCode,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="editTime != null" >
+        edit_time = #{editTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="editor != null" >
+        editor = #{editor,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pay_way_id = #{payWayId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cz.model.OrderWay" >
+    update pay_way
+    set pay_way_name = #{payWayName,jdbcType=VARCHAR},
+      pay_way_desc = #{payWayDesc,jdbcType=VARCHAR},
+      merchant_no = #{merchantNo,jdbcType=VARCHAR},
+      check_code = #{checkCode,jdbcType=VARCHAR},
+      secret_key = #{secretKey,jdbcType=VARCHAR},
+      sign_code = #{signCode,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      edit_time = #{editTime,jdbcType=TIMESTAMP},
+      editor = #{editor,jdbcType=VARCHAR}
+    where pay_way_id = #{payWayId,jdbcType=INTEGER}
+  </update>
+</mapper>

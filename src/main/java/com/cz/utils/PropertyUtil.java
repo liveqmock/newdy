@@ -14,7 +14,8 @@ public class PropertyUtil {
 
     public static String getPropertiesByName(String proName,String fileName){
         Properties prop = new Properties();
-        InputStream is = PropertyUtil.class.getResourceAsStream("/resource/" +fileName+".properties");
+        InputStream is = PropertyUtil.class.getResourceAsStream("/" +fileName+".properties");
+
         try {
             prop.load(is);
         } catch (IOException e) {
