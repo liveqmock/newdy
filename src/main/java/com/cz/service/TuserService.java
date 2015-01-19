@@ -14,15 +14,15 @@ import java.util.List;
  */
 public interface TuserService {
 
-    int addInfo(Tuser tuser);
+    int addTuser(Tuser tuser);
+
+    int deleteTuser(String tuserId);
+
+    int updateTuser(Tuser tuser);
+
+    Tuser getTuserById(String tuserId);
 
     PageUtil<Tuser> getAllTuserPageList(PageUtil<Tuser> pageUtil);
-
-    int delete(String id);
-
-    Tuser findById(String id);
-
-    int update(Tuser tuser);
 
     Tuser getTuserByUserName(String userName);
 }

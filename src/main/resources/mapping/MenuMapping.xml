@@ -78,18 +78,18 @@
     order_num, item_class, icon_top_path
   </sql>
 
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="getMenuById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from menu
     where menu_id = #{menu_id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteMenu" parameterType="java.lang.Integer" >
     delete from menu
     where menu_id = #{menu_id,jdbcType=INTEGER}
   </delete>
 
-  <insert id="insert" parameterType="com.cz.model.Menu" >
+  <insert id="addMenu" parameterType="com.cz.model.Menu" >
     insert into menu (menu_id, menu_name, menu_url, 
       open_way, parent_id, status, 
       edit_time, editor, icon_path, 
@@ -101,6 +101,7 @@
       #{order_num,jdbcType=INTEGER}, #{item_class,jdbcType=VARCHAR}, #{icon_top_path,jdbcType=VARCHAR}
       )
   </insert>
+  <!--
   <insert id="insertSelective" parameterType="com.cz.model.Menu" >
     insert into menu
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -180,8 +181,8 @@
       </if>
     </trim>
   </insert>
-
-  <update id="updateByPrimaryKeySelective" parameterType="com.cz.model.Menu" >
+-->
+  <update id="updateMenu" parameterType="com.cz.model.Menu" >
     update menu
     <set >
       <if test="menu_name != null" >
@@ -249,6 +250,11 @@
 
   <select id="getSuperAdminMenu" resultType="com.cz.model.Menu">
     SELECT m.menu_id,m.menu_name from menu m WHERE m.parent_id = 0 AND m.status =1
+  </select>
+
+  <select id="getAllMenuPageList">
+
+
   </select>
 
 </mapper>

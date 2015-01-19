@@ -5,6 +5,7 @@ import com.cz.model.Notice;
 import com.cz.service.NoticeService;
 import com.cz.utils.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by ChangYY
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * 21:29
  * TO DO What
  */
+@Service("noticeService")
 public class NoticeServiceImpl implements NoticeService {
     @Autowired
     NoticeDao noticeDao;

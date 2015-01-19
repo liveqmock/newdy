@@ -32,13 +32,13 @@
     user_position, status_flag, is_admin, head_portrait
   </sql>
 
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="getTuserById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from tuser
     where user_id = #{userId,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="deleteTuser" parameterType="java.lang.Integer">
     delete from tuser
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
@@ -48,11 +48,11 @@
         limit #{startIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
   </select>
 
-  <select id="getAllTuserTotal" resultType="java.lang.Integer"  parameterType="com.cz.utils.PageUtil">
+  <select id="getTuserTotalCount" resultType="java.lang.Integer"  parameterType="com.cz.utils.PageUtil">
         SELECT count(user_id) FROM tuser
   </select>
 
-  <insert id="insert" parameterType="com.cz.model.Tuser">
+  <insert id="addTuser" parameterType="com.cz.model.Tuser">
     insert into tuser (user_id, user_name, password, 
       name_cn, sex, birthday, 
       phone_no, email, post_address, 
@@ -70,6 +70,8 @@
       #{userPosition,jdbcType=VARCHAR}, #{statusFlag,jdbcType=VARCHAR}, #{isAdmin,jdbcType=VARCHAR}, 
       #{headPortrait,jdbcType=VARCHAR})
   </insert>
+
+  <!--
   <insert id="insertSelective" parameterType="com.cz.model.Tuser">
     insert into tuser
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -209,8 +211,8 @@
       </if>
     </trim>
   </insert>
-
-  <update id="updateByPrimaryKeySelective" parameterType="com.cz.model.Tuser">
+    -->
+  <update id="updateTuser" parameterType="com.cz.model.Tuser">
     update tuser
     <set>
       <if test="userName != null">
@@ -279,6 +281,7 @@
     </set>
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
+  <!--
   <update id="updateByPrimaryKey" parameterType="com.cz.model.Tuser">
     update tuser
     set user_name = #{userName,jdbcType=VARCHAR},
@@ -304,6 +307,7 @@
       head_portrait = #{headPortrait,jdbcType=VARCHAR}
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
+  -->
 
   <select id="getTuserByUserName" resultType="com.cz.model.Tuser" parameterType="java.lang.String">
     SELECT t.* FROM tuser t WHERE t.status = 1 AND t.user_name = #{userName};

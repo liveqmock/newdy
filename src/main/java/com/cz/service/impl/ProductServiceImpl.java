@@ -5,6 +5,7 @@ import com.cz.model.Product;
 import com.cz.service.ProductService;
 import com.cz.utils.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by ChangYY
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * 21:35
  * TO DO What
  */
+@Service("productService")
 public class ProductServiceImpl implements ProductService {
 
     @Autowired

@@ -44,11 +44,11 @@ public class TuserController extends BaseController {
      */
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     @ResponseBody
-    public Map editUser(Tuser tuser,HttpServletRequest request)
+    public Map editTuser(Tuser tuser,HttpServletRequest request)
     {
         Map mapResponse = new HashMap();
         try {
-            tuserService.update(tuser);
+            tuserService.updateTuser(tuser);
             mapResponse.put("code", 200);
             logger.info("修改用户信息成功");
         } catch (Exception e) {
@@ -62,7 +62,7 @@ public class TuserController extends BaseController {
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
     public String deleteUser(HttpServletRequest request,String userId){
-        tuserService.delete(userId);
+        tuserService.deleteTuser(userId);
         return "";
     }
     /**

@@ -15,17 +15,15 @@ import java.util.Map;
  */
 public interface MenuService {
 
-    int deleteByPrimaryKey(Integer menu_id);
+    int addMenu(Menu menu);
 
-    int insert(Menu record);
+    int deleteMenu(String menuId);
 
-    int insertSelective(Menu record);
+    int updateMenu(Menu menu);
 
-    Menu selectByPrimaryKey(Integer menu_id);
+    Menu getMenuById(String menuId);
 
-    int updateByPrimaryKeySelective(Menu record);
-
-    int updateByPrimaryKey(Menu record);
+    PageUtil<Menu> getAllMenuPageList(PageUtil<Menu> pageUtil);
 
     Map<String, Object> getMainMenuByUserId(Integer userId);
 

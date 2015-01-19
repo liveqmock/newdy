@@ -23,32 +23,32 @@ public class TuserServiceImpl implements TuserService {
     TuserDao tuserDao;
 
     @Override
-    public int addInfo(Tuser tuser) {
-        return tuserDao.insert(tuser);
+    public int addTuser(Tuser tuser) {
+        return tuserDao.addTuser(tuser);
+    }
+
+    @Override
+    public int deleteTuser(String tuserId) {
+        return tuserDao.deleteTuser(Integer.parseInt(tuserId));
+    }
+
+    @Override
+    public int updateTuser(Tuser tuser) {
+        return tuserDao.updateTuser(tuser);
+    }
+
+    @Override
+    public Tuser getTuserById(String tuserId) {
+        return tuserDao.getTuserById(Integer.parseInt(tuserId));
     }
 
     @Override
     public PageUtil<Tuser> getAllTuserPageList(PageUtil<Tuser> pageUtil) {
         List<Tuser> list=tuserDao.getAllTuserPageList(pageUtil);
-        int total=tuserDao.getAllTuserTotal(pageUtil);
+        int total=tuserDao.getTuserTotalCount(pageUtil);
         pageUtil.setTotalRecord(total);
         pageUtil.setResults(list);
         return pageUtil;
-    }
-
-    @Override
-    public int delete(String id) {
-        return tuserDao.deleteByPrimaryKey(Integer.parseInt(id));
-    }
-
-    @Override
-    public Tuser findById(String id) {
-        return tuserDao.selectByPrimaryKey(Integer.parseInt(id));
-    }
-
-    @Override
-    public int update(Tuser tuser) {
-        return tuserDao.updateByPrimaryKey(tuser);
     }
 
     @Override

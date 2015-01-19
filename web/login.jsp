@@ -45,7 +45,7 @@
 						</tr>
 						<tr>
 							<td width="108px"><input class="w118" type="text" placeholder="请输入验证码" name="validateCode" i="verify" onkeydown="if(event.keyCode == 13){this.focus();login();}"/></td>
-							<td><img src="${ctx}/getImage" id="v_image" title="点击更换" onclick="javascript:reloadVerifyCode('${ctx}/getImage',this);" style="height: 30px;width: 71px;"/></td>
+							<td><img src="${ctx}/getImage" id="v_image" title="点击更换" onclick="javascript:reloadVerifyCode('${ctx}/getImage',this);" style="height: 40px;width: 71px;"/></td>
 						</tr>
 						<tr class="h50">
 							<td><input type="checkbox" class="checkbox" />记住密码</td>

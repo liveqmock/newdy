@@ -25,35 +25,29 @@ public class MenuServiceImpl implements MenuService {
     @Autowired
     MenuDao menuDao;
 
-
     @Override
-    public int deleteByPrimaryKey(Integer menu_id) {
-        return menuDao.deleteByPrimaryKey(menu_id);  //To change body of implemented methods use File | Settings | File Templates.
+    public int addMenu(Menu menu) {
+        return menuDao.addMenu(menu);
     }
 
     @Override
-    public int insert(Menu menu) {
-        return menuDao.insert(menu);  //To change body of implemented methods use File | Settings | File Templates.
+    public int deleteMenu(String menuId) {
+        return menuDao.deleteMenu(menuId);
     }
 
     @Override
-    public int insertSelective(Menu menu) {
-        return menuDao.insertSelective(menu);  //To change body of implemented methods use File | Settings | File Templates.
+    public int updateMenu(Menu menu) {
+        return menuDao.updateMenu(menu);
     }
 
     @Override
-    public Menu selectByPrimaryKey(Integer menu_id) {
-        return menuDao.selectByPrimaryKey(menu_id);  //To change body of implemented methods use File | Settings | File Templates.
+    public Menu getMenuById(String menuId) {
+        return menuDao.getMenuById(menuId);
     }
 
     @Override
-    public int updateByPrimaryKeySelective(Menu menu) {
-        return menuDao.updateByPrimaryKeySelective(menu);  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public int updateByPrimaryKey(Menu menu) {
-        return menuDao.updateByPrimaryKey(menu);  //To change body of implemented methods use File | Settings | File Templates.
+    public PageUtil<Menu> getAllMenuPageList(PageUtil<Menu> pageUtil) {
+        return menuDao.getAllMenuPageList(pageUtil);
     }
 
     /**

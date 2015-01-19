@@ -5,6 +5,7 @@ import com.cz.model.Info;
 import com.cz.service.InfoService;
 import com.cz.utils.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by ChangYY
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * 21:15
  * TO DO What
  */
+@Service("infoService")
 public class InfoServiceImpl implements InfoService {
 
     @Autowired

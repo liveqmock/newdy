@@ -47,7 +47,7 @@ public class MenuController extends BaseController {
     {
         Map mapResponse = new HashMap();
         try {
-            menuService.insert(menu);
+            menuService.addMenu(menu);
             mapResponse.put("code", 200);
             logger.info("修改用户信息成功");
         } catch (Exception e) {
@@ -69,7 +69,7 @@ public class MenuController extends BaseController {
     {
         Map mapResponse = new HashMap();
         try {
-            menuService.updateByPrimaryKey(menu);
+            menuService.updateMenu(menu);
             mapResponse.put("code", 200);
             logger.info("修改用户信息成功");
         } catch (Exception e) {
@@ -83,7 +83,7 @@ public class MenuController extends BaseController {
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
     public int deleteUser(HttpServletRequest request,String menuId){
-        return  menuService.deleteByPrimaryKey(Integer.parseInt(menuId));
+        return  menuService.deleteMenu(menuId);
     }
 
     /**

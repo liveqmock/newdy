@@ -5,6 +5,7 @@ import com.cz.model.PayRecord;
 import com.cz.service.PayRecordService;
 import com.cz.utils.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * Created by ChangYY
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * 21:32
  * TO DO What
  */
+@Service("payRecordService")
 public class PayRecordServiceImpl implements PayRecordService {
 
     @Autowired

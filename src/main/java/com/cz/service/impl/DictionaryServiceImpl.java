@@ -5,12 +5,15 @@ import com.cz.service.DictionaryService;
 import com.cz.utils.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.cz.model.Dictionary;
+import org.springframework.stereotype.Service;
+
 /**
  * Created by ChangYY
  * 2015/1/17
  * 21:00
  * TO DO What
  */
+@Service("dictionaryService")
 public class DictionaryServiceImpl implements DictionaryService {
 
     @Autowired

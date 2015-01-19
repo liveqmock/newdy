@@ -1,22 +1,23 @@
 package com.cz.dao;
 
 import com.cz.model.Menu;
+import com.cz.utils.PageUtil;
+
 import java.util.List;
 import java.util.Map;
 
 public interface MenuDao {
 
-    int deleteByPrimaryKey(Integer menu_id);
 
-    int insert(Menu record);
+    int addMenu(Menu menu);
 
-    int insertSelective(Menu record);
+    int deleteMenu(String menuId);
 
-    Menu selectByPrimaryKey(Integer menu_id);
+    int updateMenu(Menu menu);
 
-    int updateByPrimaryKeySelective(Menu record);
+    Menu getMenuById(String menuId);
 
-    int updateByPrimaryKey(Menu record);
+    PageUtil<Menu> getAllMenuPageList(PageUtil<Menu> pageUtil);
 
     List<Menu> getTopMenu(Integer userId);
 
