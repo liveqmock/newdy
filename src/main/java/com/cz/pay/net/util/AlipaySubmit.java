@@ -1,4 +1,4 @@
-package com.cz.pay.zfb.util;
+package com.cz.pay.net.util;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -7,17 +7,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.cz.pay.zfb.config.AlipayConfig;
-import com.cz.pay.zfb.sign.MD5;
-import com.cz.pay.zfb.util.httpClient.HttpProtocolHandler;
-import com.cz.pay.zfb.util.httpClient.HttpRequest;
-import com.cz.pay.zfb.util.httpClient.HttpResponse;
-import com.cz.pay.zfb.util.httpClient.HttpResultType;
 import org.apache.commons.httpclient.NameValuePair;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Node;
 import org.dom4j.io.SAXReader;
+
+import com.cz.pay.net.config.AlipayConfig;
+import com.cz.pay.net.util.httpClient.HttpProtocolHandler;
+import com.cz.pay.net.util.httpClient.HttpRequest;
+import com.cz.pay.net.util.httpClient.HttpResponse;
+import com.cz.pay.net.util.httpClient.HttpResultType;
+import com.cz.pay.net.sign.MD5;
 
 /* *
  *类名：AlipaySubmit
@@ -97,6 +98,7 @@ public class AlipaySubmit {
         //submit按钮控件请不要含有name属性
         sbHtml.append("<input type=\"submit\" value=\"" + strButtonName + "\" style=\"display:none;\"></form>");
         sbHtml.append("<script>document.forms['alipaysubmit'].submit();</script>");
+
         return sbHtml.toString();
     }
     

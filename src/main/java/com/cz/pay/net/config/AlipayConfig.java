@@ -1,6 +1,4 @@
-package com.cz.pay.zfb.config;
-
-import com.cz.utils.PropertyUtil;
+package com.cz.pay.net.config;
 
 /* *
  *类名：AlipayConfig
@@ -13,8 +11,8 @@ import com.cz.utils.PropertyUtil;
  *该代码仅供学习和研究支付宝接口使用，只是提供一个参考。
 	
  *提示：如何获取安全校验码和合作身份者ID
- *1.用您的签约支付宝账号登录支付宝网站(www.zfb.com)
- *2.点击“商家服务”(https://b.zfb.com/order/myOrder.htm)
+ *1.用您的签约支付宝账号登录支付宝网站(www.alipay.com)
+ *2.点击“商家服务”(https://b.alipay.com/order/myOrder.htm)
  *3.点击“查询合作者身份(PID)”、“查询安全校验码(Key)”
 
  *安全校验码查看时，输入支付密码后，页面呈灰色的现象，怎么办？
@@ -27,15 +25,15 @@ public class AlipayConfig {
 	
 	//↓↓↓↓↓↓↓↓↓↓请在这里配置您的基本信息↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 	// 合作身份者ID，以2088开头由16位纯数字组成的字符串
-	public static String partner = PropertyUtil.getPropertiesByName("partner", "payConf");
+	public static String partner = "2088011593697599";
 	// 商户的私钥
-	public static String key = PropertyUtil.getPropertiesByName("key", "payConf");
+	public static String key = "e13ggcw7meqr3ky6qaq48df3anybubuh";
 
 	//↑↑↑↑↑↑↑↑↑↑请在这里配置您的基本信息↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 	
 
 	// 调试用，创建TXT日志文件夹路径
-	public static String log_path = PropertyUtil.getPropertiesByName("log_path", "payConf");
+	public static String log_path = "D:\\";
 
 	// 字符编码格式 目前支持 gbk 或 utf-8
 	public static String input_charset = "utf-8";

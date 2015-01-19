@@ -43,7 +43,7 @@
 		//需http://格式的完整路径，不能加?id=123这类自定义参数，不能写成http://localhost/
 
 		//卖家支付宝帐户
-		String seller_email = PropertyUtil.getPropertiesByName("WIDseller_email", "zfb");
+		String seller_email = PropertyUtil.getPropertiesByName("WIDseller_email", "payConf");
 		//必填
 
 		//商户订单号

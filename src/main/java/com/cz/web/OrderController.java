@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 /**
  * Created by ChangYY
@@ -33,6 +34,38 @@ public class OrderController extends BaseController {
 
     @Autowired
     private OrderService orderService;
+
+
+    @RequestMapping(value = "/netPayI", method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView netPayI(){
+        ModelAndView model = new ModelAndView();
+        model.setViewName("pay/net/index");
+        return model;
+    }
+
+
+    @RequestMapping(value = "/netPay", method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView netPay(){
+        ModelAndView model = new ModelAndView();
+        model.setViewName("pay/net/alipayapi");
+        return model;
+    }
+
+    @RequestMapping(value = "/zfbPay", method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView zfbPay(){
+        ModelAndView model = new ModelAndView();
+        model.addObject("orderNo",String.valueOf(new Random().nextInt(1000000000)));
+        model.addObject("WIDsubject","深入JVM原理第支付宝版");
+        model.addObject("WIDtotal_fee","0.01");
+        model.addObject("WIDseller_email","texhrc519@126.com");
+        model.addObject("WIDbody","中国电子出版社周志明图书");
+        model.addObject("WIDshow_url","http://localhost:8080/images/logo.png");
+        model.setViewName("pay/zfb/alipayapi");
+        return model;
+    }
 
     /**
      * 添加订单
