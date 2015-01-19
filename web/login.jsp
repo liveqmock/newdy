@@ -19,7 +19,7 @@
 		<div class="header">
 			<div class="wrap">
 				<img src="${ctx}/images/logo.png" />
-				<p>XXX</p>
+				<p>北京新时代科技有限公司</p>
 			</div>
 		</div>
 		<div class="bgd">
@@ -37,11 +37,11 @@
 						</tr>
 						<tr>
 							<td colspan="2"><input class="w230" type="text" name="userName" id="userName"
-								placeholder="请输入登录账号" /></td>
+								placeholder="请输入登录账号" value="admin"/></td>
 						</tr>
 						<tr>
 							<td colspan="2"><input class="w230" type="password" name="password"
-								id="password" placeholder="请输入密码" /></td>
+								id="password" placeholder="请输入密码" value="123456"/></td>
 						</tr>
 						<tr>
 							<td width="108px"><input class="w118" type="text" placeholder="请输入验证码" name="validateCode" i="verify" onkeydown="if(event.keyCode == 13){this.focus();login();}"/></td>

@@ -36,6 +36,15 @@ public class InfoController extends BaseController {
     @Autowired
     private InfoService infoService;
 
+
+    @RequestMapping(value = "/addPage", method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView addInfoPage(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName(this.getPath(commonPath,"add"));
+        return modelAndView;
+    }
+
     /**
      * 添加信息
      * @param info
