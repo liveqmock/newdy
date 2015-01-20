@@ -34,6 +34,16 @@ public class RoleController extends BaseController {
     @Autowired
     private RoleService roleService;
 
+
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView index(){
+        ModelAndView model = new ModelAndView();
+        model.setViewName(this.getPath(commonPath,"index"));
+        return model;
+    }
+
+
     /**
      * 添加角色
      * @param role
@@ -112,7 +122,7 @@ public class RoleController extends BaseController {
             page = roleService.getAllRolePageList(page);
             Map<String, Object> map = new HashMap<String, Object>();
             model.addObject(page);
-            model.setViewName("/role/role_list");
+            model.setViewName(this.getPath(commonPath,"list"));
             return model;
         } catch (Exception e) {
             e.printStackTrace();

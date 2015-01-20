@@ -87,6 +87,11 @@ public class MenuServiceImpl implements MenuService {
         return menuDao.getSuperAdminMenu();
     }
 
+    @Override
+    public List<Menu> getMenuTree() {
+        return menuDao.getMenuTree();
+    }
+
     /**
      * 根据菜单id查询其下的菜单
      * @param menuId

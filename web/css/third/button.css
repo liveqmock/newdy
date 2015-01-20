@@ -1,0 +1,62 @@
+@charset "utf-8";
+/* CSS Document */
+select, input, button, button img, textarea, label, img {
+    margin: 0;
+    vertical-align: middle;
+}
+.sub-btn-frame, .sub-btn, .sub-btn span {
+    -moz-box-align: center;
+    display: inline-block;
+    vertical-align: middle;
+	font-size:12px;
+}
+
+.sub-btn, .sub-btn span {
+    cursor: pointer;
+    overflow: hidden;
+    text-align: center;
+    white-space: nowrap;
+}
+.sub-btn-frame {
+    margin-right: 8px;
+    padding-right: 1px;
+}
+.sub-btn-frame a{
+color:#27558E;
+}
+.sub-btn-frame a:hover{
+color:#FF3300;
+}
+.sub-btn-frame .sub-btn {
+    margin-right: -1px;
+}
+.sub-btn-over {
+    border: 0 none;
+    color: #000000;
+    height: 24px;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    text-decoration: none;
+	background-position: 100% -24px;
+}
+.sub-btn-over span {
+    line-height: 15px;
+    margin-right: 3px;
+    padding: 4px 9px 5px 12px;
+}
+
+.sub-btn-over span {
+    background-position: -288px 0;
+}
+.sub-btn-over:hover{
+    background-position: 100% -216px;
+}
+.sub-btn-over:hover span{
+    background-position: -288px -192px;
+}
+
+.sub-btn, .sub-btn span{
+    background-image: url("../images/bg.png");
+    background-repeat: no-repeat;
+}

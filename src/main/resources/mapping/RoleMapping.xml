@@ -175,4 +175,14 @@
       editor = #{editor,jdbcType=VARCHAR}
     where role_id = #{role_id,jdbcType=INTEGER}
   </update>
+
+  <select id="getAllRolePageList" parameterType="com.cz.utils.PageUtil" resultType="com.cz.model.Role">
+    select * from role
+    order by role_id asc
+    limit #{startIndex,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+  </select>
+
+  <select id="getRolesTotal" parameterType="com.cz.utils.PageUtil" resultType="java.lang.Integer">
+    select count(role_id) from role r WHERE r.status = 1
+  </select>
 </mapper>

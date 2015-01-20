@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,6 +37,31 @@ public class MenuController extends BaseController {
     private MenuService menuService;
 
 
+    @RequestMapping(value = "/list",method = RequestMethod.POST)
+    @ResponseBody
+    public List treeList(String flag){
+        List list1 = new ArrayList();
+        try{
+            List<Menu> list = menuService.getMenuTree();
+            if(list!=null&&list.size()>0){
+                for(Menu menu:list){
+                    Map map = new HashMap();
+                    map.put("id",menu.getMenu_id());
+                    map.put("name",menu.getMenu_name());
+                    map.put("pid",menu.getParent_id());
+                    if("1".equalsIgnoreCase(flag)){
+                        map.put("check",true);
+                    }
+                    list1.add(map);
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return list1;
+    }
+
+
     /**
      * 添加菜单
      * @param menu
@@ -49,9 +75,9 @@ public class MenuController extends BaseController {
         try {
             menuService.addMenu(menu);
             mapResponse.put("code", 200);
-            logger.info("修改用户信息成功");
+            logger.info("修改菜单信息成功");
         } catch (Exception e) {
-            logger.error("修改用户信息失败" + e);
+            logger.error("修改菜单信息失败" + e);
             mapResponse.put("code", 201);
             e.printStackTrace();
         }
@@ -71,9 +97,9 @@ public class MenuController extends BaseController {
         try {
             menuService.updateMenu(menu);
             mapResponse.put("code", 200);
-            logger.info("修改用户信息成功");
+            logger.info("修改菜单信息成功");
         } catch (Exception e) {
-            logger.error("修改用户信息失败" + e);
+            logger.error("修改菜单信息失败" + e);
             mapResponse.put("code", 201);
             e.printStackTrace();
         }

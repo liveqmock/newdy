@@ -3,6 +3,8 @@ package com.cz.dao;
 import com.cz.model.Role;
 import com.cz.utils.PageUtil;
 
+import java.util.List;
+
 public interface RoleDao {
 
     int addRole(Role role);
@@ -13,5 +15,7 @@ public interface RoleDao {
 
     Role getRoleById(String roleId);
 
-    PageUtil<Role> getAllRolePageList(PageUtil<Role> pageUtil);
+    int getRolesTotal(PageUtil<Role> pageUtil);
+
+    List<Role> getAllRolePageList(PageUtil<Role> pageUtil);
 }

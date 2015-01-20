@@ -30,4 +30,7 @@ public interface MenuDao {
     List<Menu> getMenuByParentId(Map map);
 
     List<Menu> getSuperAdminMenu();
+
+    List<Menu> getMenuTree();
+
 }

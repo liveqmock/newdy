@@ -7,6 +7,8 @@ import com.cz.utils.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by ChangYY
  * 2015/1/17
@@ -41,6 +43,10 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public PageUtil<Role> getAllRolePageList(PageUtil<Role> pageUtil) {
-        return roleDao.getAllRolePageList(pageUtil);
+        List<Role> list = roleDao.getAllRolePageList(pageUtil);
+        int total = roleDao.getRolesTotal(pageUtil);
+        pageUtil.setResults(list);
+        pageUtil.setTotalRecord(total);
+        return pageUtil;
     }
 }
