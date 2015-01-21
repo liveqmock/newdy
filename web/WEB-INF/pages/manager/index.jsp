@@ -11,10 +11,13 @@
 			request.setAttribute("basePath", basePath);
 		%>
 		<title>管理平台</title>
+		<link rel="stylesheet" href="${basePath}/js/jquery-ui-1.11.2.custom/jquery-ui.min.css">
 		<link href="${basePath}/css/reset.css" type="text/css" rel="stylesheet">
 		<link href="${basePath}/css/style.css" rel="stylesheet" type="text/css">
 		<link href="${basePath}/css/lvyan.css" rel="stylesheet" type="text/css">
-        <script type="text/javascript" src="${basePath}/js/jquery-1.10.2.js"></script>
+        <script src="${basePath}/js/jquery-1.8.2.min.js" type="text/javascript"></script>
+		<script language="javascript" type="text/javascript" src="${basePath}/js/jquery-ui-1.11.2.custom/jquery-ui.min.js"></script>
+		<script language="javascript" type="text/javascript" src="${basePath}/js/jquery.selectui.js"></script>
         <script type="text/javascript" src="${basePath}/js/layout.js"></script>
         <script type="text/javascript">
 //            $(document).ready(function(){
@@ -68,7 +71,7 @@
 			<div class="Rframe">
 				<!--这里是框架-->
 				<div class="iframe">
-					<iframe name="Rframe" style="width: 100%;" src="" id="indexIframe">
+					<iframe name="indexIframe" style="width: 100%;" src="" id="indexIframe">
 					</iframe>
 				</div>
 			</div>

@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" pageEncoding="utf-8"%>
-<div class="footer">
+<div class="pagination pull-right">
 	<div style="display: inline;">
         <span>共 <b>${pageUtil.totalRecord}</b> 条</span>
 	</div>
