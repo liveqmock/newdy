@@ -1,8 +1,9 @@
 package com.cz.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Dictionary {
+public class Dictionary implements Serializable{
 
     private String data_id;
 

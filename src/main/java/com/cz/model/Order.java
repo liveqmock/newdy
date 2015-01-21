@@ -1,8 +1,9 @@
 package com.cz.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Order {
+public class Order implements Serializable {
     private Integer pay_record_id;
 
     private Integer user_id;

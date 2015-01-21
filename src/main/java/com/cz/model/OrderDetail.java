@@ -1,6 +1,8 @@
 package com.cz.model;
 
-public class OrderDetail {
+import java.io.Serializable;
+
+public class OrderDetail implements Serializable {
     private Integer id;
 
     private Integer payRecordId;
