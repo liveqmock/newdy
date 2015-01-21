@@ -111,7 +111,7 @@ public class TuserController extends BaseController {
      * @param tuser
      * @return
      */
-    @RequestMapping(value = "/list", method = RequestMethod.POST)
+    @RequestMapping(value = "/list", method = {RequestMethod.POST,RequestMethod.GET})
     @ResponseBody
     public ModelAndView listUser(Tuser tuser, String pageNo,HttpServletRequest request) {
         ModelAndView model = new ModelAndView();
@@ -126,7 +126,7 @@ public class TuserController extends BaseController {
             page = tuserService.getAllTuserPageList(page);
             Map<String, Object> map = new HashMap<String, Object>();
             model.addObject(page);
-            model.setViewName("/user/user_result");
+            model.setViewName("/tuser/userList");
             return model;
         } catch (Exception e) {
             e.printStackTrace();
