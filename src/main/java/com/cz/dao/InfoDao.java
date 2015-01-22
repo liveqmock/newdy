@@ -16,4 +16,6 @@ public interface InfoDao {
     Info getInfoById(String infoId);
 
     List<Info> getAllInfoPageList(PageUtil<Info> pageUtil);
+
+    int getTotalRecordInfo(PageUtil<Info> pageUtil);
 }

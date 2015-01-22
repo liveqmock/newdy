@@ -7,6 +7,8 @@ import com.cz.utils.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by ChangYY
  * 2015/1/17
@@ -41,6 +43,10 @@ public class InfoServiceImpl implements InfoService {
 
     @Override
     public PageUtil<Info> getAllInfoPageList(PageUtil<Info> pageUtil) {
-        return infoDao.getAllInfoPageList(pageUtil);
+        List<Info> list = infoDao.getAllInfoPageList(pageUtil);
+        int totalRecord = infoDao.getTotalRecordInfo(pageUtil);
+        pageUtil.setResults(list);
+        pageUtil.setTotalRecord(totalRecord);
+        return pageUtil;
     }
 }
