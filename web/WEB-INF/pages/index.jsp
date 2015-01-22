@@ -55,7 +55,7 @@
             <dd>
             	<dd>
             	<ul>
-             	 <li><a href="${contextPath}/role/index"" target="mainwork">角色权限管理</a></li>
+             	 <li><a href="${contextPath}/role/index" target="mainwork">角色权限管理</a></li>
              	 <li><a href="${contextPath}/user/userRole" target="mainwork">用户角色管理</a></li>
              	 <li><a href="${contextPath}/user/userGroup" target="mainwork">用户所属组管理</a></li>
              	 <li><a href="${contextPath}/group/index" target="mainwork">用户组管理</a></li>
