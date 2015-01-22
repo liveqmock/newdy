@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8">
 <title>特自由旅行网</title>
-<link href="${contextPath}/teziyou/css/reset.css" type="text/css" rel="stylesheet">
-<link href="${contextPath}/teziyou/css/index.css" rel="stylesheet" type="text/css">
-<script src="${contextPath}/teziyou/js/jquery-1.8.2.min.js" type="text/javascript"></script>
-<script src="${contextPath}/teziyou/js/layout.js" type="text/javascript"></script>
+<link href="${contextPath}/resources/teziyou/css/reset.css" type="text/css" rel="stylesheet">
+<link href="${contextPath}/resources/teziyou/css/index.css" rel="stylesheet" type="text/css">
+<script src="${contextPath}/resources/teziyou/js/jquery-1.8.2.min.js" type="text/javascript"></script>
+<script src="${contextPath}/resources/teziyou/js/layout.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -17,7 +17,7 @@
 
 	<!--这里是logo-->
 	<div class="logo">
-    	<a href="#"><img src="${contextPath}/teziyou/images/logo.png" title="特自由旅行网"></a>
+    	<a href="#"><img src="${contextPath}/resources/teziyou/images/logo.png" title="特自由旅行网"></a>
     </div>
     <!--这里是横向导航
     <div class="menu fl">
@@ -55,7 +55,7 @@
             <dd>
             	<dd>
             	<ul>
-             	 <li><a href="${contextPath}/role/index" target="mainwork">角色权限管理</a></li>
+             	 <li><a href="${contextPath}/role/index"" target="mainwork">角色权限管理</a></li>
              	 <li><a href="${contextPath}/user/userRole" target="mainwork">用户角色管理</a></li>
              	 <li><a href="${contextPath}/user/userGroup" target="mainwork">用户所属组管理</a></li>
              	 <li><a href="${contextPath}/group/index" target="mainwork">用户组管理</a></li>

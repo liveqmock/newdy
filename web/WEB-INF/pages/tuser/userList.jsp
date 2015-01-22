@@ -1,104 +1,109 @@
-<%@ page language="java"  pageEncoding="UTF-8"%>
-<%@include file="../util/Library.jsp"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ include file="../common/taglibs.jsp" %>
+<%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 <html>
-  <head>
-    <meta http-equiv="pragma" content="no-cache">
-    <meta http-equiv="cache-control" content="no-cache">
-    <meta http-equiv="expires" content="0">
-    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
-    <title>中票盟</title>
-	<%@ include file="../util/pageLayout.jsp" %>
-	    <style type="text/css">
-      .content form{padding-top: 15px;height: 100px;}
-      .dialog{display:none;}
-    </style>
-  </head>
-  <body id="note">
-  <div class="content">
-    <form action="${contextPath}/tuser/list.do" method="post">
-        <label>姓名：
-        <input type="text" name="userName" /></label>
-        <button type="submit" class="btn-query">查 询</button>
-      </p>
-    </form>
-     <button class="btn-add">添加</button>
-    <table>
-      <tr class="gray">
-            <th><input type="checkbox"/>全选</th>
-            <th >用户名</th>
-            <th >姓名</th>
-            <th >电话号码</th>
-            <th >邮件</th>
-            <th >操作</th>
-        </tr>
-        <c:forEach items="${pageUtil.results}" var="item">
-            <tr>
-                <td><input type="checkbox" name="scenicspotId" value="${item.userId}"/></td>
-                <td>${item.userName}</td>
-                <td>${item.nameCn}</td>
-                <td>${item.phoneNo}</td>
-                <td>${item.email}</td>
-                <td>
-                 <a href="${contextPath}/scenicSpot/update?scenicspotId=${item.userId}" target="_self">修改</a>
-                </td>
-            </tr>
-        </c:forEach>
-    </table>
-  </div>
-  <%@ include file="/WEB-INF/pages/util/Page.jspf" %>
-  <div class="dialog">
-    <form id="badEquipmentModelFormId" action="/ticketingB2B/equipmentManager/operateBadTerminalEquipment" >
-			<table>
-				<tr>
-					<td class="title">姓名：</td>
-					<td><input type="text" id="equipment_idNOd" value=""  name="equipment_idNOd"/></td>
-				</tr>
-			</table>
-		</form>
-  </div>
-  <script type="text/javascript">
-  $(function(){
-	    $('.selectui').SelectUI();    
-	        var $doc,html = '';     
-	        if(window.location!=window.parent.location){    
-	            $doc=window.parent.jQuery.noConflict();     
-	        }else{    
-	            $doc=jQuery.noConflict();     
-	        }     
-	     $doc("body").append('<div id="dialog" title="新增"></div>');     
-	     var dialog=$doc("#dialog"); 
-	     html = $('.dialog').html();    
-	     $('.btn-add').click(function(event) {
-	       dialog.html(html); 
-	       $doc('.selectui').SelectUI();      
-	        dialog.dialog({ 
-	           width: 430,height:404,minHeight:404,minWidth:430, bgiframe: true ,modal: true,title:"新增", 
-	           buttons: { "保存": function() {    
-	        	 var form = $doc('#equipmentModelFormId');
-	              var fields =form.serializeArray();
-	        	   
-	           	$.ajax({type:"post",
-					url:form.attr('action'),
-					data:fields,
-					cache: true,
-					dataType:"json"				
-				}).done(function(data) {
-					alert(data.msg);
-					if(data.isSuccess) {
-					}
-				});
+<head>
+    <title></title>
+</head>
+<body>
+<div class="container-fluid">
+		<div class="row-fluid">
 
-	        	   
-	             dialog.dialog("close");
-				//location.reload();
-	             //location.href='${contextPath}/equipmentManager/queryEquipmentModels';
+			<div id="content">
 
-	        }}
-	        
-	       });    
-	     });  
-	        
-	  });
-   </script>
-  </body>
+			<!-- content starts -->
+
+			<div class="sortable row-fluid">
+				<div class="box">
+					<div class="box-header well" data-original-title>
+						<h2>员工列表</h2>
+						<div class="box-icon">
+							<!-- <a href="#" class="btn btn-setting btn-round"><i class="icon-cog"></i></a> -->
+							<a href="#" class="btn btn-minimize btn-round"><i class="icon-chevron-up"></i></a>
+							<!-- <a href="#" class="btn btn-close btn-round"><i class="icon-remove"></i></a>-->
+						</div>
+					</div>
+					<!-- <th>操作</th> -->
+					<div class="box-content">
+
+                        <form:form method="get" action="${contextPath}/user/index" cssClass="form-horizontal" modelAttribute="user">
+						<fieldset>
+						  <div class="control-group">
+							<label class="control-label" for="focusedInput">用户名</label>
+							<div class="controls">
+							  <form:input path="userName" cssClass="input-xlarge focused"/>
+							</div>
+						  </div>
+						  <div class="control-group">
+							<label class="control-label" for="focusedInput">员工姓名</label>
+							<div class="controls">
+							  <input class="input-xlarge focused" id="focusedInput" type="text" value="This is focused…">
+							</div>
+						  </div>
+						  <div class="control-group">
+							<label class="control-label" for="focusedInput">所属组织机构</label>
+							<div class="controls">
+							  <input class="input-xlarge focused" id="focusedInput" type="text" value="This is focused…">
+							<button type="submit" class="btn btn-success"><i class="icon-ok icon-white"></i> 搜索</button>
+							<a href="${contextPath}/user/create"   class="btn btn-primary" data-title="新增"><i class="icon-plus-sign icon-white"></i>  新增</a>
+
+							</div>
+						  </div>
+						</fieldset>
+					  </form:form>
+
+<!-- 						<a class="btn btn-primary" data-trigger="modal" data-onClose="test" href="#modal-container-152137" data-title="添加用户" data-width="800" data-height="600"><i class="icon-plus-sign icon-white"></i> 新增</a> -->
+						<table class="table table-striped table-bordered bootstrap-datatable datatable">
+						  <thead>
+							  <tr>
+<!-- 							  	<th width="20"><input type="checkbox" id="optionsCheckbox2" value="option1"></th> -->
+							  	<th>用户名</th>
+								  <th>员工姓名</th>
+								  <th>所属机构</th>
+								  <th>有效状态</th>
+								  <th width="140">操作</th>
+							  </tr>
+						  </thead>
+						  <tbody>
+						  <c:forEach items="${pagedResult.list}" var="user">
+
+				       			<tr>
+<!-- 				       			<td><input type="checkbox" id="optionsCheckbox2" value="option1"></td> -->
+								<td><c:out value="${user.userName}"></c:out></td>
+								<td><c:out value="${user.userId}"></c:out></td>
+								<td><c:out value="${user.functionOrgName}"></c:out></td>
+								<td>
+
+									<form id="checkboxform" class="form-horizontal" method="post" action="${contextPath}/user/save">
+				                            <input type="hidden" name="userName" value="${user.userName}"/>
+				                            <input type="hidden" name="functionOrgId" value="${user.functionOrgId}"/>
+				                            <input type="hidden" name="userId" value="${user.userId}"/>
+											<input <c:if test="${user.isOk eq 1}">checked="checked"</c:if> type="checkbox" onclick="$(this).parent().submit();" name="isOk" value="1">
+	                                  </form>
+								</td>
+								<td>
+									<form:form method="post" action="${contextPath}/user/delete"
+                                                   cssStyle="float:left;margin: 0 0 0 0;">
+                                            <input type="hidden" name="id" value="${user.userId}"/>
+                                            <button class="btn btn-danger" style="margin: 0 5px 0 0" type="submit" onclick="return confirm('确认删除？')">
+                                                <i class="icon-trash icon-white"></i> 删除
+                                            </button>
+                                        </form:form>
+                                        <a class="btn btn-primary"
+                                           href="${contextPath}/user/update?id=${user.userId}"><i
+                                                class="icon-pencil icon-white"></i> 修改</a>
+								</td>
+								</tr>
+				  			</c:forEach>
+						</tbody>
+					</table>
+					<tags:pagination pagedResult="${pagedResult}"/>
+				</div>
+			</div>
+			</div>
+			</div>
+		</div><!--/fluid-row-->
+	</div><!--/.fluid-container-->
+</body>
 </html>

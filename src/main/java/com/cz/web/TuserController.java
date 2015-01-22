@@ -5,7 +5,6 @@ import com.cz.service.TuserService;
 import com.cz.utils.BaseController;
 import com.cz.utils.LogUtils;
 import com.cz.utils.PageUtil;
-import org.apache.xmlbeans.impl.values.TypeStoreUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -126,7 +125,7 @@ public class TuserController extends BaseController {
             page = tuserService.getAllTuserPageList(page);
             Map<String, Object> map = new HashMap<String, Object>();
             model.addObject(page);
-            model.setViewName("/tuser/userList");
+            model.setViewName("tuser/userList");
             return model;
         } catch (Exception e) {
             e.printStackTrace();
