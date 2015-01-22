@@ -47,7 +47,11 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public PageUtil<Menu> getAllMenuPageList(PageUtil<Menu> pageUtil) {
-        return menuDao.getAllMenuPageList(pageUtil);
+        List<Menu> list =  menuDao.getAllMenuPageList(pageUtil);
+        int totalRecord = menuDao.getTotalRecordMenu(pageUtil);
+        pageUtil.setResults(list);
+        pageUtil.setTotalRecord(totalRecord);
+        return pageUtil;
     }
 
     /**

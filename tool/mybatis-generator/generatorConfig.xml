@@ -35,7 +35,7 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 		<!-- 表明对应的domain对象 -->
-        <table tableName="scenic_spot" domainObjectName="ScenicSpot"></table>
+        <table tableName="sys_log" domainObjectName="SysLog"></table>
     </context>
 </generatorConfiguration>
 

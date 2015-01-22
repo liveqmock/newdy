@@ -181,4 +181,8 @@
       info_type = #{info_type,jdbcType=VARCHAR}
     where info_id = #{info_id,jdbcType=INTEGER}
   </update>
+
+  <select id="getAllInfoPageList" resultType="com.cz.model.Info" parameterMap="com.cz.utils.PageUtil">
+
+  </select>
 </mapper>
