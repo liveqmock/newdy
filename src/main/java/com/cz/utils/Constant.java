@@ -16,6 +16,8 @@ public class Constant {
 
 	public final static String USERINFO = "userInfo";
 
+	public static final Integer DEFAULT_PAGE_SIZE = 10;
+
 	/**
 	 * 权限常量
 	 */
