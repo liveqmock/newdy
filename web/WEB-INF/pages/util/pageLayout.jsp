@@ -11,6 +11,7 @@
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/js/jquery-ui-1.11.2.custom/jquery-ui.min.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/comms.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/public.css">
 <script language="javascript" type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.2.min.js"></script>
 <script language="javascript" type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-ui-1.11.2.custom/jquery-ui.min.js"></script>
 <script language="javascript" type="text/javascript" src="${pageContext.request.contextPath}/js/My97DatePicker/WdatePicker.js"></script>
