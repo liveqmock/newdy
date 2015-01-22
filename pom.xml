@@ -281,6 +281,25 @@
                     </includes>
                 </configuration>
             </plugin>
+            
+             <!-- 代码生成 -->
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.2</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>5.1.21</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <configurationFile>${basedir}/tool/mybatis-generator/generatorConfig.xml</configurationFile>
+                    <overwrite>false</overwrite>
+                </configuration>
+            </plugin>
+            
         </plugins>
     </build>
     
