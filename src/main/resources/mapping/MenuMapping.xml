@@ -254,7 +254,12 @@
     SELECT m.menu_id,m.menu_name from menu m WHERE m.parent_id = 0 AND m.status =1
   </select>
 
-  <select id="getAllMenuPageList">
+  <select id="getAllMenuPageList" resultType="com.cz.model.Menu" parameterType="com.cz.utils.PageUtil">
+
+
+  </select>
+
+  <select id="getTotalRecordMenu" resultType="java.lang.Integer" parameterType="com.cz.utils.PageUtil">
 
 
   </select>

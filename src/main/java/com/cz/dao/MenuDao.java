@@ -17,7 +17,9 @@ public interface MenuDao {
 
     Menu getMenuById(String menuId);
 
-    PageUtil<Menu> getAllMenuPageList(PageUtil<Menu> pageUtil);
+    List<Menu> getAllMenuPageList(PageUtil<Menu> pageUtil);
+
+    int getTotalRecordMenu(PageUtil<Menu> pageUtil);
 
     List<Menu> getTopMenu(Integer userId);
 
