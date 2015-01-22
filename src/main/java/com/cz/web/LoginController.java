@@ -48,9 +48,10 @@ public class LoginController extends BaseController {
 			Tuser userInfo, HttpServletResponse response, String userLogo) {
 		try {
 			Tuser userInfoTmp = getCurrentUser(request);
+			userInfoTmp = new Tuser();
 			if (userInfoTmp != null) {
 				ModelAndView model = new ModelAndView();
-				model.setViewName("manager/index");
+				model.setViewName("index");
 				return model;
 			} else {
 				String validateCode = request.getParameter("validateCode");
@@ -81,7 +82,7 @@ public class LoginController extends BaseController {
 						if(userInfo.getPassword().equals(userInfoTmp.getPassword())){
 							request.getSession().setAttribute(Constant.USERINFO,userInfoTmp);
 							ModelAndView model = new ModelAndView();
-							model.setViewName("manager/index");
+							model.setViewName("index");
 							return model;
 						}else{
 							request.setAttribute("msg", "密码不正确");
