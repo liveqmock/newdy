@@ -15,7 +15,7 @@
             <ul>
                 <c:forEach items="${map[item.menu_id]}" var="menu">
                     <li>
-                        <a href="${menu.menu_url}" target="indexIframe">${menu.menu_name}</a>
+                        <a href="${menu.menu_url}" target="mainwork">${menu.menu_name}</a>
                     </li>
                 </c:forEach>
             </ul>
