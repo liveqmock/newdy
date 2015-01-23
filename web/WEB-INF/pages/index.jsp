@@ -8,6 +8,35 @@
 <link href="${contextPath}/resources/teziyou/css/index.css" rel="stylesheet" type="text/css">
 <script src="${contextPath}/resources/teziyou/js/jquery-1.8.2.min.js" type="text/javascript"></script>
 <script src="${contextPath}/resources/teziyou/js/layout.js" type="text/javascript"></script>
+    <script type="text/javascript">
+//        $(document).ready(function(){
+//            initTopMenu();
+//        });
+        <!--初始化用户菜单 -->
+        function initTopMenu(){
+            $.ajax({
+                url:'menu/getTopMenu.do',
+                type:'post',
+                dataType:'html',
+                data:"",
+                error: function(){/*alert('error');*/},
+                success:function(data){
+                    alert(1);
+                   $("#LframeData").html(data);
+                    resetHeight();
+                    show('.Lframe dl dt');
+                    show('.Lframe dl dd ul>li a');
+                }
+            });
+        }
+
+        <!--用户退出登陆 -->
+        function loginOut(){
+            if(confirm("确定退出？")){
+                window.location.href="${contextPath}/loginOut";
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -33,53 +62,15 @@
     -->
     <!--这里是登陆者信息-->
     <div class="login fr">
-    	<h2>${sessionScope.userInfo.userName}<a href="#"> [退出] </a></h2>
+    	<h2>当前用户：${sessionScope.userName}<a href="javascript:loginOut();">[退出平台]</a></h2>
     </div>
 </div>
 <!--这里是主体-->
 <div class="main">
 	<!--这里是左边大导航-->
-	<div class="Lframe">
-        <dl>
-        	<dt>用户管理</dt>
-            <dd>
-            	<ul>
-             	 <li><a href="${contextPath}/user/index" target="mainwork">用户账号管理</a></li>
-                </ul>
-            </dd>
-        </dl>
-        <dl>
-        	<dt>功能权限分配管理</dt>
-            <dd>
-            	<dd>
-            	<ul>
-             	 <li><a href="${contextPath}/role/index" target="mainwork">角色权限管理</a></li>
-             	 <li><a href="${contextPath}/user/userRole" target="mainwork">用户角色管理</a></li>
-             	 <li><a href="${contextPath}/user/userGroup" target="mainwork">用户所属组管理</a></li>
-             	 <li><a href="${contextPath}/group/index" target="mainwork">用户组管理</a></li>
-                </ul>
-            </dd>
-        </dl>
-        <dl>
-        	<dt>功能权限管理</dt>
-            <dd>
-            	<dd>
-            	<ul>
-            	<li><a href="${contextPath}/functionRight/index" target="mainwork">功能权限管理</a></li>
-             	 <li><a href="${contextPath}/menu/index" target="mainwork">功能菜单管理</a></li>
-                </ul>
-            </dd>
-        </dl>
-        <dl>
-        	<dt>组织机构管理</dt>
-            <dd>
-            	<dd>
-            	<ul>
-            	<li><a href="${contextPath}/org/index" target="mainwork">组织机构管理</a></li>
-                </ul>
-            </dd>
-        </dl>
-        </div>
+	<div class="Lframe" id="LframeData">
+
+    </div>
     <!--这里是右半部分-->
     <!--这里是面包线导航
     	<div class="Tnav" id="tnavBar">

@@ -7,28 +7,18 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
 <c:forEach items="${menuTopList}" var="item" varStatus="status">
-    <dl <c:if test="${status.first}">class="show"</c:if>>
-        <dt id='ppuu_${status.index}' pid='pid_${status.index}' show='false'>
-                ${item.menu_name}
-        </dt>
+    <dl>
+        <dt>${item.menu_name}</dt>
+        <c:if test="${!status.first}"><dd></c:if>
         <dd>
             <ul>
-            <c:forEach items="${map[item.menu_id]}" var="menu">
-                <li>
-                    <h4>
+                <c:forEach items="${map[item.menu_id]}" var="menu">
+                    <li>
                         <a href="${menu.menu_url}" target="indexIframe">${menu.menu_name}</a>
-                    </h4>
-                </li>
-             </c:forEach>
+                    </li>
+                </c:forEach>
             </ul>
         </dd>
     </dl>
 </c:forEach>
-</body>
-</html>
