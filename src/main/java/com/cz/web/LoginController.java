@@ -43,7 +43,7 @@ public class LoginController extends BaseController {
 	 * @param userLogo
 	 * @return
 	 */
-	@RequestMapping(value = "/login")
+	@RequestMapping(value = "/userLogin")
 	public ModelAndView userLogin(HttpServletRequest request,
 			Tuser userInfo, HttpServletResponse response, String userLogo) {
 		try {
@@ -60,21 +60,21 @@ public class LoginController extends BaseController {
 				{
 					request.setAttribute("msg", "验证码不能为空！");
 					request.getRequestDispatcher("/login.jsp").forward(request,response);
-					return null;
+					return  null;
 				}else{
 					if (!validateCode.equalsIgnoreCase(_validateCode))
 					{
 						request.setAttribute("msg", "验证码不正确！");
 						request.getRequestDispatcher("/login.jsp").forward(request,response);
-						return null;
+						return  null;
 					}
 				}
 				if (userInfo == null
 						|| (StringUtils.isEmpty(userInfo.getUserName()) && StringUtils
 								.isEmpty(userInfo.getPassword()))) {
-					userInfo = getCurrentUser(request);
 					request.setAttribute("msg", "用户名或者密码不能为空");
 					request.getRequestDispatcher("/login.jsp").forward(request,response);
+					return  null;
 				}else{
 					userInfoTmp = tuserService.getTuserByUserName(userInfo.getUserName());
 					if(userInfoTmp!=null){
@@ -86,10 +86,12 @@ public class LoginController extends BaseController {
 						}else{
 							request.setAttribute("msg", "密码不正确");
 							request.getRequestDispatcher("/login.jsp").forward(request,response);
+							return  null;
 						}
 					}else{
 						request.setAttribute("msg", "用户名不正确");
 						request.getRequestDispatcher("/login.jsp").forward(request,response);
+						return  null;
 					}
 				}
 
@@ -109,14 +111,14 @@ public class LoginController extends BaseController {
 	@RequestMapping(value = "/loginOut")
 	public void loginOut(HttpServletRequest request,HttpServletResponse response){
 		try {
-			logger.info("用户退出登陆请求========");
 			Tuser userInfo = getCurrentUser(request);
 			if (userInfo == null) {
 				response.sendRedirect("/login.jsp");
 			} else {
 				HttpSession session = request.getSession();
-				session.removeAttribute(Constant.USERINFO);
-				//session.invalidate();
+				//session.removeAttribute(Constant.USERINFO);
+				//session.removeAttribute("validateCode");
+				session.invalidate();
 				response.sendRedirect("/login.jsp");
 			}
 		} catch (Exception e){
@@ -152,7 +154,7 @@ public class LoginController extends BaseController {
 	@RequestMapping(value = "/main")
 	public ModelAndView webIndex(){
 		ModelAndView model = new ModelAndView();
-		model.setViewName("/manager/index");
+		model.setViewName("index");
         return model;
 	}
 }

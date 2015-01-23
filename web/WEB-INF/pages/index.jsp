@@ -19,7 +19,7 @@
                 type:'post',
                 dataType:'html',
                 data:"",
-                error: function(){/*alert('error');*/},
+                error: function(){alert('请求异常，请联系管理员！');},
                 success:function(data){
                     $("#LframeData").html(data);
                     resetHeight();
@@ -64,7 +64,7 @@
     -->
     <!--这里是登陆者信息-->
     <div class="login fr">
-    	<h2>当前用户：${sessionScope.userName}<a href="javascript:loginOut();">[退出平台]</a></h2>
+    	<h3>平台管理系统欢迎您 当前用户：${sessionScope.userName}<a href="javascript:loginOut();">[退出]</a></h3>
     </div>
 </div>
 <!--这里是主体-->

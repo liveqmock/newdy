@@ -24,7 +24,7 @@
 		</div>
 		<div class="bgd">
 			<div class="wrap relative">
-				<form action="${ctx}/login" method="post" id="loginForm">
+				<form action="${ctx}/userLogin" method="post" id="loginForm">
 					<table class="absolute">
 						<tr class="title">
 							<td colspan="2">

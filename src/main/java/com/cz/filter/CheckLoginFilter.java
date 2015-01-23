@@ -16,6 +16,8 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.cz.model.Tuser;
+import com.cz.utils.Constant;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.druid.util.StringUtils;
@@ -45,19 +47,22 @@ public class CheckLoginFilter implements Filter {
      */
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,
 			FilterChain filter) throws IOException, ServletException {
-		// TODO Auto-generated method stub
 		HttpServletRequest request=(HttpServletRequest)servletRequest;
 		HttpServletResponse response=(HttpServletResponse)servletResponse;
+		System.out.println("getRequestURL=========:"+request.getRequestURL().toString());
 		String servletPath = request.getServletPath();
+		System.out.println("servletPath========:"+servletPath);
 		if(checkPath(servletPath)){
 			filter.doFilter(servletRequest, servletResponse);
 		}else{
-			//System.out.println("getRequestURL:"+request.getRequestURL().toString());
-	        if(StringUtils.isEmpty("session")){
-	        	 String loginUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-	             + request.getContextPath() + "/";
-		    // System.out.println("loginUrl=====:"+loginUrl);
-		     response.sendRedirect(loginUrl);
+			Tuser tuser = (Tuser)request.getSession().getAttribute(Constant.USERINFO);
+			System.out.println("tuser======="+tuser);
+	        if(tuser==null){
+	        	 String timeoutPage = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+	             + request.getContextPath() + "/timeout.jsp";
+				// request.getSession(true).removeAttribute("validateCode");
+		     response.sendRedirect(timeoutPage);
+				//response.getWriter().write("<scprit>window.top.location = "+basePath+"</script>");
 	        }else{
                 filter.doFilter(servletRequest, servletResponse);
 	        }
@@ -73,15 +78,15 @@ public class CheckLoginFilter implements Filter {
 	            servletPath=servletPath.substring(0,servletPath.indexOf("?")-1);
 	        }
 	        List<String> pathList=new ArrayList<String>();
-	        pathList.add("index");
-	        pathList.add("login");
-	        pathList.add("/druid/");
+	        pathList.add("/userLogin");
+		    pathList.add("/login.jsp");
+		    pathList.add("/timeout.jsp");
+	        pathList.add("/druid");
             pathList.add("/css/");
 	        pathList.add("/js/");
 	        pathList.add("/headimg/");
-	        pathList.add("/images/");
 	        pathList.add("/image/");
-	        pathList.add("/resource/");
+		    pathList.add("/getImage");
 	        boolean flag=false;
 	        for(String path:pathList){
 	            if(servletPath.indexOf(path.trim())>-1){
