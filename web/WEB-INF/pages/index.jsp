@@ -9,9 +9,9 @@
 <script src="${contextPath}/resources/teziyou/js/jquery-1.8.2.min.js" type="text/javascript"></script>
 <script src="${contextPath}/resources/teziyou/js/layout.js" type="text/javascript"></script>
     <script type="text/javascript">
-//        $(document).ready(function(){
-//            initTopMenu();
-//        });
+        $(document).ready(function(){
+            initTopMenu();
+        });
         <!--初始化用户菜单 -->
         function initTopMenu(){
             $.ajax({
@@ -21,11 +21,13 @@
                 data:"",
                 error: function(){/*alert('error');*/},
                 success:function(data){
-                    alert(1);
-                   $("#LframeData").html(data);
+                    $("#LframeData").html(data);
                     resetHeight();
                     show('.Lframe dl dt');
                     show('.Lframe dl dd ul>li a');
+                    show2('.Lframe dl .btn', 'click');
+                    show2('.Lframe dl dd ul>li', 'show');
+                    init();
                 }
             });
         }
