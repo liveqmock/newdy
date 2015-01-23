@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ include file="common/taglibs.jsp" %>
 <!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>特自由旅行网</title>
+<title>在线教育管理平台</title>
 <link href="${contextPath}/resources/teziyou/css/reset.css" type="text/css" rel="stylesheet">
 <link href="${contextPath}/resources/teziyou/css/index.css" rel="stylesheet" type="text/css">
 <script src="${contextPath}/resources/teziyou/js/jquery-1.8.2.min.js" type="text/javascript"></script>
@@ -34,7 +33,7 @@
     -->
     <!--这里是登陆者信息-->
     <div class="login fr">
-    	<h2>乘风-超级管理员<a href="#"> [退出] </a></h2>
+    	<h2>${sessionScope.userInfo.userName}<a href="#"> [退出] </a></h2>
     </div>
 </div>
 <!--这里是主体-->
@@ -42,7 +41,6 @@
 	<!--这里是左边大导航-->
 	<div class="Lframe">
         <dl>
-
         	<dt>用户管理</dt>
             <dd>
             	<ul>
@@ -104,7 +102,7 @@
     </div>
 </div>
 <footer>
-	<p style="text-align: center;">&copy; <a href="#" target="_blank">特自游（北京）信息技术有限公司</a>  2014-2016</p>
+	<p style="text-align: center;">&copy; <a href="#" target="_blank">华源润通(北京)信息技术有限公司</a>  2015-2018</p>
 </footer>
 </body>
 </html>

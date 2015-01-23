@@ -19,7 +19,7 @@
 		<div class="header">
 			<div class="wrap">
 				<img src="${ctx}/resources/image/logo.png" />
-				<p>北京新时代科技有限公司</p>
+				<p>华源润通(北京)科技有限公司</p>
 			</div>
 		</div>
 		<div class="bgd">
