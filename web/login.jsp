@@ -7,9 +7,9 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
 <meta charset="utf-8">
 <title>管理平台</title>
-<link href='${ctx}/css/login.css' rel="stylesheet">
-<script src="${ctx}/js/jquery-1.8.2.min.js"></script>
-<script src="${ctx}/js/jquery.placeholderui.js"></script>
+<link href='${ctx}/resources/charisma/css/login.css' rel="stylesheet">
+<script src="${ctx}/resources/charisma/js/jquery-1.7.2.min.js"></script>
+<script src="${ctx}/resources/charisma/js/jquery.placeholderui.js"></script>
 <style type="text/css">
 
 </style>
@@ -18,7 +18,7 @@
 	<div id="login">
 		<div class="header">
 			<div class="wrap">
-				<img src="${ctx}/images/logo.png" />
+				<img src="${ctx}/resources/image/logo.png" />
 				<p>北京新时代科技有限公司</p>
 			</div>
 		</div>

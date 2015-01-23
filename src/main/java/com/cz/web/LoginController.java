@@ -48,7 +48,6 @@ public class LoginController extends BaseController {
 			Tuser userInfo, HttpServletResponse response, String userLogo) {
 		try {
 			Tuser userInfoTmp = getCurrentUser(request);
-			userInfoTmp = new Tuser();
 			if (userInfoTmp != null) {
 				ModelAndView model = new ModelAndView();
 				model.setViewName("index");
