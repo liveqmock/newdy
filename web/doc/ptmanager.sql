@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50528
 File Encoding         : 65001
 
-Date: 2015-01-16 17:28:00
+Date: 2015-01-26 10:32:00
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -78,34 +78,35 @@ CREATE TABLE `menu` (
   `item_class` varchar(50) DEFAULT NULL,
   `icon_top_path` varchar(50) DEFAULT NULL COMMENT '菜单一级目录图标',
   PRIMARY KEY (`menu_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of menu
 -- ----------------------------
-INSERT INTO `menu` VALUES ('1', '网站基本信息管理', null, '0', '0', '1', null, null, '/images/ico01.png', '2', 'kuai_yellow', '/images/ico_sy2.png');
+INSERT INTO `menu` VALUES ('1', '组织机构管理', null, null, '0', '1', null, null, '/images/ico03.png', null, 'kuai_red', '/images/ico_sy4.png');
 INSERT INTO `menu` VALUES ('2', '企业内容管理', null, '0', '0', '1', null, null, '/images/ico02.png', null, 'kuai_green', '/images/ico_sy3.png');
 INSERT INTO `menu` VALUES ('3', '产品管理', null, null, '0', '1', null, null, '/images/ico07.png', null, 'kuai_red', '/images/ico_sy8.png');
 INSERT INTO `menu` VALUES ('4', '新闻公告管理', null, '0', '0', '1', null, null, '/images/ico08.png', null, 'kuai_yellow', '/images/ico_sy8.png');
-INSERT INTO `menu` VALUES ('5', '会员信息管理', null, null, '0', '1', null, null, '/images/ico03.png', null, 'kuai_red', '/images/ico_sy4.png');
+INSERT INTO `menu` VALUES ('5', '网站基本信息管理', null, '0', '0', '1', null, null, '/images/ico01.png', '2', 'kuai_yellow', '/images/ico_sy2.png');
 INSERT INTO `menu` VALUES ('6', '积分兑换管理', null, null, '0', '1', null, null, '/images/ico04.png', null, 'kuai_blue', '/images/ico_sy5.png');
 INSERT INTO `menu` VALUES ('7', '订单管理', null, null, '0', '1', null, null, '/images/ico06.png', null, 'kuai_orange', '/images/ico_sy7.png');
 INSERT INTO `menu` VALUES ('8', '论坛管理', null, '0', '0', '1', null, null, '/images/ico05.png', null, 'kuai_purple', '/images/ico_sy6.png');
-INSERT INTO `menu` VALUES ('10', '网站1', ' /initResourceAdd.do', '1', '1', '1', null, null, null, '1', null, null);
-INSERT INTO `menu` VALUES ('11', '网站2', ' /initQuery.do', '0', '1', '1', null, null, null, '2', null, null);
+INSERT INTO `menu` VALUES ('10', '网站1', ' /initResourceAdd.do', '1', '5', '1', null, null, null, '1', null, null);
+INSERT INTO `menu` VALUES ('11', '网站2', ' /initQuery.do', '0', '5', '0', null, null, null, '2', null, null);
 INSERT INTO `menu` VALUES ('12', '企业1', ' /initCourseAdd', '0', '2', '1', null, null, null, '1', null, null);
-INSERT INTO `menu` VALUES ('13', '企业2', ' /initCourseQuery', '0', '2', '1', null, null, null, '2', null, null);
+INSERT INTO `menu` VALUES ('13', '企业2', ' /initCourseQuery', '0', '2', '0', null, null, null, '2', null, null);
 INSERT INTO `menu` VALUES ('14', '会员1', '/initAuditResource.do', null, '3', '1', null, null, null, null, null, null);
-INSERT INTO `menu` VALUES ('15', '会员2', '/initAuditCourse.do', null, '3', '1', null, null, null, null, null, null);
-INSERT INTO `menu` VALUES ('16', '积分1', '/initStatisticalResource.do', null, '4', '1', null, null, null, null, null, null);
-INSERT INTO `menu` VALUES ('17', '积分2', '/initStatisticalCourse.do', null, '4', '1', null, null, null, null, null, null);
-INSERT INTO `menu` VALUES ('18', '积分三', '/initStatisticalBuy.do', null, '4', '1', null, null, null, null, null, null);
-INSERT INTO `menu` VALUES ('19', '积分四', '/initStatisticalLearnUser.do', null, '4', '1', null, null, null, null, null, null);
-INSERT INTO `menu` VALUES ('20', '论坛一', ' /initNoticeQuery', '0', '5', '0', null, null, null, '1', null, null);
-INSERT INTO `menu` VALUES ('21', '论坛二', ' /initMesssageQuery', '0', '5', '1', null, null, null, '1', null, null);
+INSERT INTO `menu` VALUES ('15', '会员2', '/initAuditCourse.do', null, '3', '0', null, null, null, null, null, null);
+INSERT INTO `menu` VALUES ('16', '积分1', '/initStatisticalResource.do', null, '4', '0', null, null, null, null, null, null);
+INSERT INTO `menu` VALUES ('17', '积分2', '/initStatisticalCourse.do', null, '4', '0', null, null, null, null, null, null);
+INSERT INTO `menu` VALUES ('18', '积分三', '/initStatisticalBuy.do', null, '4', '0', null, null, null, null, null, null);
+INSERT INTO `menu` VALUES ('19', '积分四', '/initStatisticalLearnUser.do', null, '4', '0', null, null, null, null, null, null);
+INSERT INTO `menu` VALUES ('20', '用户管理', ' /tuser/list', '0', '1', '1', null, null, null, '1', null, null);
+INSERT INTO `menu` VALUES ('21', '角色管理', '/role/index', '0', '1', '1', null, null, null, '1', null, null);
 INSERT INTO `menu` VALUES ('22', '订单查询', ' /user/addPage', '0', '6', '1', null, null, null, '1', 'addPage', null);
-INSERT INTO `menu` VALUES ('23', '订单删除', '/user/managerPage', null, '6', '1', null, null, null, null, 'managerPage', null);
-INSERT INTO `menu` VALUES ('24', '订单详情', '/user/managerGroupPage', null, '6', '1', null, null, null, null, 'managerGroupPage', null);
+INSERT INTO `menu` VALUES ('23', '订单删除', '/user/managerPage', null, '6', '0', null, null, null, null, 'managerPage', null);
+INSERT INTO `menu` VALUES ('24', '订单详情', '/user/managerGroupPage', null, '6', '0', null, null, null, null, 'managerGroupPage', null);
+INSERT INTO `menu` VALUES ('25', '菜单管理', '/menu/index', null, '1', '1', null, null, null, null, null, null);
 
 -- ----------------------------
 -- Table structure for `message`
@@ -294,6 +295,27 @@ INSERT INTO `role_menu` VALUES ('3', '3', '1');
 INSERT INTO `role_menu` VALUES ('4', '4', '1');
 INSERT INTO `role_menu` VALUES ('5', '5', '1');
 INSERT INTO `role_menu` VALUES ('6', '6', '1');
+
+-- ----------------------------
+-- Table structure for `sys_log`
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_log`;
+CREATE TABLE `sys_log` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `module` varchar(255) DEFAULT NULL,
+  `event` int(1) DEFAULT NULL,
+  `operinfo` varchar(1000) DEFAULT NULL,
+  `userip` varchar(255) DEFAULT NULL,
+  `userId` int(11) DEFAULT NULL,
+  `username` varchar(255) DEFAULT NULL,
+  `opertime` datetime DEFAULT NULL,
+  `type` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sys_log
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `template`
